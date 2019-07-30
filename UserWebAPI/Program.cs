@@ -14,20 +14,13 @@ namespace UserWebAPI
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Start();
+            CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
-        {
-            var temp1 = WebHost.CreateDefaultBuilder(args);
-            var temp2 = temp1.UseStartup<Startup>();
-            var temp3 = temp2.Build(); return temp3;
-        }
-
-        //public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-        //    WebHost.CreateDefaultBuilder(args)
-        //        .UseStartup<Startup>()
-        //        .Build();
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+                
 
     }
 }
