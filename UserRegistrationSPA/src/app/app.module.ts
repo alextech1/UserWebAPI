@@ -2,23 +2,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import {FormsModule} from '@angular/forms';
+//import { AppRoutingModule } from './app-routing.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ToastrModule } from 'ngx-toastr';
+import { LogInComponent } from './log-in/log-in.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignUpComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule, //REQUIRED for ngModel tags
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      SignUpComponent,
+      LogInComponent,
+      HomeComponent
+   ],
+   imports: [
+      BrowserModule,
+      HttpClientModule,
+      //AppRoutingModule,
+      FormsModule,
+      ReactiveFormsModule,
+      //REQUIREDforngModeltags\\nHttpClientModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot()
+   ],
+   providers: [],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }

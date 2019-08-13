@@ -10,7 +10,7 @@ using UserWebAPI.Models;
 namespace UserWebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190729142215_InitialDB")]
+    [Migration("20190731212907_InitialDB")]
     partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -159,8 +159,6 @@ namespace UserWebAPI.Migrations
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Password");
 
                     b.Property<string>("PasswordHash");
 

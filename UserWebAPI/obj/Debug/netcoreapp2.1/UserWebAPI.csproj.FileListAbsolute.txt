@@ -7,8 +7,8 @@ C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\bin\Debug\n
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.runtimeconfig.json
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.runtimeconfig.dev.json
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.dll
-C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.RazorTargetAssemblyInfo.cache
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.pdb
-C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.csprojAssemblyReference.cache
+C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.RazorTargetAssemblyInfo.cache
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.dll
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.pdb
+C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.csprojAssemblyReference.cache
