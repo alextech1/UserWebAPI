@@ -18,9 +18,14 @@ export class UserService {
       LastName:user.LastName,
       UserName: user.UserName,
       Password: user.Password,
-      Email: user.Email      
+      Email: user.Email,
+      Token: user.Token
     }
     return this.http.post<User>(this.rootUrl + 'api/User/Register', body);
+  }
+
+  getUser(id): Observable<User> {
+    return this.http.get<User>(this.rootUrl + 'users/' + id);
   }
 }
 

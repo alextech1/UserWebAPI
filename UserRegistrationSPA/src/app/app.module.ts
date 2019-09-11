@@ -10,23 +10,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
 import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
 
 @NgModule({
    declarations: [
       AppComponent,
       SignUpComponent,
       LogInComponent,
-      HomeComponent
+      HomeComponent,
+      NavComponent
    ],
-   imports: [
+   imports: [      
       BrowserModule,
       HttpClientModule,
       //AppRoutingModule,
       FormsModule,
       ReactiveFormsModule,
-      //REQUIREDforngModeltags\\nHttpClientModule,
+      //REQUIREDforngModeltags\\\\nHttpClientModule,
       BrowserAnimationsModule,
-      ToastrModule.forRoot()
+      ToastrModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [],
    bootstrap: [
