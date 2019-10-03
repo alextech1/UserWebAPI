@@ -12,3 +12,16 @@ C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\bin\Debug\n
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.RazorTargetAssemblyInfo.cache
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.dll
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.pdb
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.deps.json
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.runtimeconfig.json
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.runtimeconfig.dev.json
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.dll
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.1\UserWebAPI.pdb
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.csproj.CoreCompileInputs.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.RazorAssemblyInfo.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.RazorAssemblyInfo.cs
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.AssemblyInfoInputs.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.AssemblyInfo.cs
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.RazorTargetAssemblyInfo.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.dll
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.1\UserWebAPI.pdb

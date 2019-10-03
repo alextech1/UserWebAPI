@@ -6,8 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  items: Array<any> = [];
 
-  constructor() { }
+  constructor() {
+    this.items = [
+      { name: 'assets/images/pizzapic1.jpg'},
+      { name: 'assets/images/pizzapic2.jpg'},
+      { name: 'assets/images/pizzapic3.jpg'},
+      { name: 'assets/images/pizzapic1.jpg'},
+      { name: 'assets/images/pizzapic2.jpg'},
+      { name: 'assets/images/pizzapic3.jpg'}
+    ];
+  }
 
   ngOnInit() {
   }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
 import { HttpClientModule } from '@angular/common/http';
 //import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,10 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { ProductComponent } from './product/product.component';
+import { OrderComponent } from './order/order.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
    declarations: [
@@ -20,22 +25,32 @@ import { appRoutes } from './routes';
       SignUpComponent,
       LogInComponent,
       HomeComponent,
-      NavComponent
+      NavComponent,
+      ProductComponent,
+      OrderComponent,
+      CartComponent
    ],
-   imports: [      
+   imports: [
       BrowserModule,
       HttpClientModule,
       //AppRoutingModule,
       FormsModule,
       ReactiveFormsModule,
-      //REQUIREDforngModeltags\\\\nHttpClientModule,
+      //REQUIREDforngModeltags\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\nHttpClientModule',
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      Ng2CarouselamosModule
    ],
    providers: [],
    bootstrap: [
       AppComponent
    ]
 })
-export class AppModule { }
+
+export class AppModule { 
+   constructor() {
+   }
+   ngDoBootstrap() {}
+
+}

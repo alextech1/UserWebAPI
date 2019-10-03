@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using UserWebAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +12,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Newtonsoft.Json.Converters;
 using UserWebAPI.Entities;
 using UserWebAPI.Services;
 
@@ -31,7 +31,7 @@ namespace UserWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddCors(options =>
             {
@@ -42,12 +42,14 @@ namespace UserWebAPI
                 .Build());
             });
 
-            services.AddAuthentication(o => {
+            services.AddAuthentication(o =>
+            {
                 o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 o.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(options => {
+            .AddJwtBearer(options =>
+            {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
@@ -59,23 +61,31 @@ namespace UserWebAPI
                 };
             });
 
-            services.AddScoped<IUserService, UserService>();
+           
             services.AddAutoMapper();
 
-            //services.AddIdentity<User, IdentityRole>()
-            //    .AddEntityFrameworkStores<DataContext>()
-            //    .AddDefaultTokenProviders();
+            services.AddIdentity<User, Role>(options =>
+                {
+                    options.User.RequireUniqueEmail = false;
+                })
+                .AddEntityFrameworkStores<DataContext>()
+                .AddDefaultTokenProviders();
 
-            services.AddMvc();
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddMvc()
+                .AddJsonOptions(options => { options.SerializerSettings.Converters.Add(new StringEnumConverter()); })
+                .AddControllersAsServices();
         }
-        
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();                
+                app.UseDeveloperExceptionPage();
             }
-            else {
+            else
+            {
                 app.UseExceptionHandler(builder =>
                 {
                     builder.Run(async context =>
@@ -94,7 +104,7 @@ namespace UserWebAPI
 
             app.UseCors("CorsPolicy");
             app.UseMvc();
-        } 
+        }
 
     }
 }

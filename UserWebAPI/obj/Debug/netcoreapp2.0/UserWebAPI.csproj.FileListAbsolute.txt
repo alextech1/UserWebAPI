@@ -1,0 +1,14 @@
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.0\UserWebAPI.deps.json
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.0\UserWebAPI.runtimeconfig.json
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.0\UserWebAPI.runtimeconfig.dev.json
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.0\UserWebAPI.dll
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\bin\Debug\netcoreapp2.0\UserWebAPI.pdb
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.csprojAssemblyReference.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.csproj.CoreCompileInputs.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.RazorAssemblyInfo.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.RazorAssemblyInfo.cs
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.AssemblyInfoInputs.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.AssemblyInfo.cs
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.RazorTargetAssemblyInfo.cache
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.dll
+C:\FreelanceProjects\UserWebAPI-master\UserWebAPI\obj\Debug\netcoreapp2.0\UserWebAPI.pdb

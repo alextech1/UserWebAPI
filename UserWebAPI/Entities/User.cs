@@ -1,19 +1,15 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace UserWebAPI.Entities
 {
-    public class User
+    public class User : IdentityUser<int>
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
-        public string Email { get; set; }
-        public string UserName { get; set; }
-        public byte[] PasswordHash { get; set; }
+
+        [NotMapped]
         public byte[] PasswordSalt { get; set; }
     }
 }

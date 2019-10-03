@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UserWebAPI.Models;
+using UserWebAPI.Entities;
 
 namespace UserWebAPI.Migrations
 {
@@ -21,87 +22,78 @@ namespace UserWebAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("NormalizedName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Role");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ClaimType");
+                b.Property<string>("ClaimType");
 
-                    b.Property<string>("ClaimValue");
+                b.Property<string>("ClaimValue");
 
-                    b.Property<string>("UserId");
+                b.Property<int>("UserId");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("UserClaim");
-                });
+                b.ToTable("UserClaim");
+            });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("ProviderKey");
+            {
+                b.Property<string>("ProviderKey");
 
-                    b.Property<string>("LoginProvider");
+                b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderDisplayName");
+                b.Property<string>("ProviderDisplayName");
 
-                    b.Property<string>("UserId");
+                b.Property<int>("UserId");
 
-                    b.HasKey("ProviderKey", "LoginProvider");
+                b.HasKey("ProviderKey", "LoginProvider");
 
-                    b.ToTable("UserLogin");
-                });
+                b.ToTable("UserLogin");
+            });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("RoleId");
+            {
+                b.Property<int>("RoleId");
 
-                    b.Property<string>("UserId");
+                b.Property<int>("UserId");
 
-                    b.HasKey("RoleId", "UserId");
+                b.HasKey("RoleId", "UserId");
 
-                    b.ToTable("UserRole");
-                });
+                b.ToTable("UserRole");
+            });
 
-            modelBuilder.Entity("UserWebAPI.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            modelBuilder.Entity<User>(b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Email");
+                b.Property<string>("Email");
 
-                    b.Property<string>("FirstName");
+                b.Property<string>("FirstName");
 
-                    b.Property<string>("LastName");
+                b.Property<string>("LastName");
 
-                    b.Property<byte[]>("PasswordHash");
+                b.Property<string>("PasswordHash");
 
-                    b.Property<byte[]>("PasswordSalt");
+                b.Property<string>("UserName");
 
-                    b.Property<string>("UserName");
+                b.HasKey("Id");
 
-                    b.HasKey("Id");
+                b.ToTable("User");
+            });
 
-                    b.ToTable("User");
-                });
+            modelBuilder.Entity<Role>(c =>
+            {
+                c.Property(r => r.Id).ValueGeneratedOnAdd()
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                c.HasKey("Id");
+
+                c.ToTable("Role");
+            });
 #pragma warning restore 612, 618
         }
     }

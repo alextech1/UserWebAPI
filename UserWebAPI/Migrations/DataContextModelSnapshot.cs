@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using UserWebAPI.Entities;
 using UserWebAPI.Models;
 
 namespace UserWebAPI.Migrations
@@ -13,27 +14,10 @@ namespace UserWebAPI.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.0-rtm-30799")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("NormalizedName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Role");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
@@ -45,7 +29,7 @@ namespace UserWebAPI.Migrations
 
                     b.Property<string>("ClaimValue");
 
-                    b.Property<string>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
@@ -60,7 +44,7 @@ namespace UserWebAPI.Migrations
 
                     b.Property<string>("ProviderDisplayName");
 
-                    b.Property<string>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("ProviderKey", "LoginProvider");
 
@@ -69,9 +53,9 @@ namespace UserWebAPI.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.Property<string>("RoleId");
+                    b.Property<int>("RoleId");
 
-                    b.Property<string>("UserId");
+                    b.Property<int>("UserId");
 
                     b.HasKey("RoleId", "UserId");
 
@@ -90,9 +74,7 @@ namespace UserWebAPI.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<byte[]>("PasswordHash");
-
-                    b.Property<byte[]>("PasswordSalt");
+                    b.Property<string>("PasswordHash");
 
                     b.Property<string>("UserName");
 
@@ -100,7 +82,15 @@ namespace UserWebAPI.Migrations
 
                     b.ToTable("User");
                 });
-#pragma warning restore 612, 618
+
+            modelBuilder.Entity<Role>(c =>
+            {
+                c.Property(r => r.Id).ValueGeneratedOnAdd()
+                    .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                c.HasKey("Id");
+
+                c.ToTable("Role");
+            });
         }
     }
 }

@@ -1,11 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using UserWebAPI.Entities;
 
 namespace UserWebAPI.Models
@@ -16,7 +10,7 @@ namespace UserWebAPI.Models
         public string LastName { get; set; }
     }*/
 
-    public class DataContext : DbContext //DataContext instead of ApplicationDbContext
+    public class DataContext : DbContext 
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
@@ -31,7 +25,7 @@ namespace UserWebAPI.Models
                 u.ToTable("User");
                 u.HasKey(x => x.Id);
             });
-            builder.Entity<IdentityRole>(u =>
+            builder.Entity<Role>(u =>
             {
                 u.ToTable("Role");
                 u.HasKey(x => x.Id);
@@ -51,23 +45,6 @@ namespace UserWebAPI.Models
                 u.ToTable("UserLogin");
                 u.HasKey(x => new { x.ProviderKey, x.LoginProvider });
             });
-
-
-            //    //AspNetUsers -> User
-            //    builder.Entity<User>()
-            //        .ToTable("User");
-            //    //AspNetRoles -> Role
-            //    builder.Entity<IdentityRole>()
-            //        .ToTable("Role");
-            //    //AspNetRoles -> UserRole
-            //    builder.Entity<IdentityUserRole<string>>()
-            //        .ToTable("UserRole");
-            //    //AspNetUserClaims -> UserClaim
-            //    builder.Entity<IdentityUserClaim<string>>()
-            //        .ToTable("UserClaim");
-            //    //AspNetUserLogins -> UserLogin
-            //    builder.Entity<IdentityUserLogin<string>>()
-            //        .ToTable("UserLogin");
         }
     }
 }

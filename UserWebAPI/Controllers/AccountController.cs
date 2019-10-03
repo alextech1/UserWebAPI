@@ -1,62 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using UserWebAPI.Models;
 using AutoMapper;
-using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Security.Claims;
 using UserWebAPI.Entities;
-using UserWebAPI.Services;
 
 namespace UserWebAPI.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("[controller]")]
     public class AccountController : ControllerBase
     {
-        //private IUserService _userService;
         private readonly IMapper _mapper;
-        private readonly IConfiguration _config;
 
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
         public AccountController(
-            //IUserService userService,
             IMapper mapper,
-            IConfiguration config,
             UserManager<User> userManager,
             SignInManager<User> signInManager
-            )
+        )
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            //_userService = userService;
             _mapper = mapper;
-            _config = config;
         }
 
         [AllowAnonymous]
-        [Route("api/User/Login")]
+        [Route("api/auth/Login")]
         [HttpPost]
-        public async Task <IActionResult> Login([FromBody]AccountModel model)
+        public async Task<IActionResult> Login([FromBody]AccountModel model)
         {
-            //var user = _userService.Login(model.UserName, model.Password);
             var user = await _userManager.FindByNameAsync(model.UserName);
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-
             if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });            
+            {
+                return BadRequest(new { message = "Username or password is incorrect" });
+            }
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
 
             if (result.Succeeded)
             {
@@ -68,15 +58,20 @@ namespace UserWebAPI.Controllers
             return Unauthorized();
         }
 
-        [Route("api/User/Register", Name = "GetUser") ]
+        [AllowAnonymous]
+        [Route("api/User/Register", Name = "GetUser")]
         [HttpPost]
         public async Task<IActionResult> Register([FromBody]AccountModel model) //add async Task<Result>
         {
             var userStore = _mapper.Map<User>(model);
-            var manager = await _userManager.CreateAsync(userStore, model.Password); 
-            var user = new User() { UserName = model.UserName, Email = model.Email };
-            user.FirstName = model.FirstName;
-            user.LastName = model.LastName;
+            var manager = await _userManager.CreateAsync(userStore, model.Password);
+            var user = new User
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                LastName = model.LastName
+            };
 
             if (manager.Succeeded)
             {
@@ -85,7 +80,7 @@ namespace UserWebAPI.Controllers
             return BadRequest(manager.Errors);
         }
 
-        private static string GenerateJwtToken (AccountModel model)
+        private static string GenerateJwtToken(AccountModel model)
         {
             var claims = new List<Claim>
             {
