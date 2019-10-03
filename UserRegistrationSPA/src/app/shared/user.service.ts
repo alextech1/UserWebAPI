@@ -19,6 +19,7 @@ export class UserService {
       UserName: user.UserName,
       Password: user.Password,
       Email: user.Email,
+      Address: user.Address,
       Token: user.Token
     }
     return this.http.post<User>(this.rootUrl + 'api/User/Register', body);

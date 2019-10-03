@@ -4,38 +4,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UserWebAPI.Migrations
 {
-    public partial class InitialDB : Migration
+    public partial class InitialDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "User",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserName = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: false),
-                    NormalizedUserName = table.Column<string>(nullable: false),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    NormalizedEmail = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: true),
-                    AccessFailedCount = table.Column<int>(nullable: true),
-                    LockoutEnd = table.Column<DateTime>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: true),
-                    TwoFactorEnabled = table.Column<bool>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_User", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Role",
                 columns: table => new
@@ -49,6 +21,35 @@ namespace UserWebAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Role", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "User",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserName = table.Column<string>(nullable: true),
+                    NormalizedUserName = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    NormalizedEmail = table.Column<string>(nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -84,8 +85,8 @@ namespace UserWebAPI.Migrations
                 name: "UserRole",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(nullable: false),
-                    RoleId = table.Column<int>(nullable: false)
+                    UserId = table.Column<string>(nullable: false),
+                    RoleId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,6 +100,9 @@ namespace UserWebAPI.Migrations
                 name: "Role");
 
             migrationBuilder.DropTable(
+                name: "User");
+
+            migrationBuilder.DropTable(
                 name: "UserClaim");
 
             migrationBuilder.DropTable(
@@ -106,19 +110,6 @@ namespace UserWebAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserRole");
-
-            migrationBuilder.DropPrimaryKey(
-                name: "PK_User",
-                table: "User");
-
-            migrationBuilder.RenameTable(
-                name: "User",
-                newName: "Users");
-
-            migrationBuilder.AddPrimaryKey(
-                name: "PK_Users",
-                table: "Users",
-                column: "Id");
         }
     }
 }

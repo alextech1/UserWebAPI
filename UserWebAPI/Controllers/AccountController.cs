@@ -70,7 +70,8 @@ namespace UserWebAPI.Controllers
                 UserName = model.UserName,
                 Email = model.Email,
                 FirstName = model.FirstName,
-                LastName = model.LastName
+                LastName = model.LastName,
+                Address = model.Address
             };
 
             if (manager.Succeeded)

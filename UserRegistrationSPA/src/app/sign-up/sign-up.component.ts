@@ -26,7 +26,8 @@ export class SignUpComponent implements OnInit {
       LastName:  ['', Validators.required],
       UserName:  ['', Validators.required],
       Password:  ['', Validators.required],
-      Email: ['', Validators.required]
+      Email: ['', Validators.required],
+      Address: ['', Validators.required]
   });
 } 
 
@@ -37,6 +38,7 @@ export class SignUpComponent implements OnInit {
     request.UserName = this.userRegistrationForm.get('UserName').value;
     request.Password = this.userRegistrationForm.get('Password').value;
     request.Email = this.userRegistrationForm.get('Email').value;
+    request.Address = this.userRegistrationForm.get('Email').value;
 
     if (this.userRegistrationForm.valid) {
       //this.user = Object.assign({}, this.userRegistrationForm.value);
