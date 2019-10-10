@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../shared/user.service';
 import { AuthService } from '../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
+ 
 
 @Component({
   selector: 'app-log-in',
@@ -23,7 +24,8 @@ export class LogInComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute,
   ) { 
     //if (this.authService.currentUserValue) {
     //  this.router.navigate(['/']);
@@ -31,7 +33,16 @@ export class LogInComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.createLoginForm();
+    this.activatedRoute.params.subscribe(params => {
+      var logout = params['logout'];
+      if(logout)
+        localStorage.setItem("username", "");
+
+      let userId = localStorage.getItem("username");
+      if(userId != "")
+        this.router.navigateByUrl('logout');
+      this.createLoginForm();
+    });
   }
   
   createLoginForm() {
@@ -57,10 +68,13 @@ export class LogInComponent implements OnInit {
         .subscribe(
           (data:any) => {
             this.toastr.success("Login Successful");
+            localStorage.setItem("username", this.userLoginForm.get('UserName').value);
+            console.log(localStorage.getItem("username"));
+            this.router.navigateByUrl('home');
           }
         , 
         error => {
-        this.toastr.error(error);
+        this.toastr.error("Login failed!");
         this.loading = false;
     }); 
   }

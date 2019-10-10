@@ -18,6 +18,8 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { ProductComponent } from './product/product.component';
 import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
    declarations: [
@@ -28,7 +30,9 @@ import { CartComponent } from './cart/cart.component';
       NavComponent,
       ProductComponent,
       OrderComponent,
-      CartComponent
+      CartComponent,
+      CheckoutComponent,
+      LogoutComponent
    ],
    imports: [
       BrowserModule,

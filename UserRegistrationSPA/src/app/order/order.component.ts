@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from '../entities/product.entity';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-order',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderComponent implements OnInit {
 
-  constructor() { }
+  private products: Product[];
+  
+  constructor( private productService: ProductService ) { 
+    
+  }
 
   ngOnInit() {
+    this.products = this.productService.findAll();
+    console.log(this.products);
+
   }
 
 }

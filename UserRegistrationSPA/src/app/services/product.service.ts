@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../entities/product.entity';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class ProductService {
     private products: Product[];
 

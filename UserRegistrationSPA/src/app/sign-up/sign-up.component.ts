@@ -3,6 +3,7 @@ import { User } from '../shared/user.model';
 import { NgForm, FormGroup, ReactiveFormsModule, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../shared/user.service';
 import {ToastrService} from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up', //used in app.component.html
@@ -14,7 +15,7 @@ export class SignUpComponent implements OnInit {
   userRegistrationForm: FormGroup;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
-  constructor(private userService:UserService, private toastr: ToastrService, private fb: FormBuilder) { }
+  constructor(private userService:UserService, private toastr: ToastrService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.createRegisterForm();
@@ -44,6 +45,7 @@ export class SignUpComponent implements OnInit {
       //this.user = Object.assign({}, this.userRegistrationForm.value);
       this.userService.registerUser(request).subscribe((data:any) => {      
         this.toastr.success("User Registration Successful"); 
+        this.router.navigateByUrl('log-in');
       }, error => {
         this.toastr.error(error);
     }); 
