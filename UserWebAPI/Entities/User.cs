@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using UserWebAPI.Models;
 
 namespace UserWebAPI.Entities
 {
@@ -9,6 +11,8 @@ namespace UserWebAPI.Entities
 
         public string LastName { get; set; }
         public string Address { get; set; }
+        public ICollection<Status> OrderStatus { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
 
         [NotMapped]
         public byte[] PasswordSalt { get; set; }

@@ -1,16 +1,13 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using UserWebAPI.Entities;
 
 namespace UserWebAPI.Models
 {
-    /*public class ApplicationUser : IdentityUser
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }*/
-
-    public class DataContext : DbContext 
+    //IdentityDbContext<User, Role, int, IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>,
+    //    IdentityRoleClaim<int>, IdentityUserToken<int>>
+    public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 

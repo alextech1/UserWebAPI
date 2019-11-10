@@ -11,6 +11,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using System.Security.Claims;
 using UserWebAPI.Entities;
+using UserWebAPI.Dtos;
+using System.Linq;
 
 namespace UserWebAPI.Controllers
 {
@@ -19,7 +21,6 @@ namespace UserWebAPI.Controllers
     public class AccountController : ControllerBase
     {
         private readonly IMapper _mapper;
-
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
 
@@ -79,7 +80,7 @@ namespace UserWebAPI.Controllers
                 return CreatedAtRoute("GetUser", new { id = userStore.Id }, user);
             }
             return BadRequest(manager.Errors);
-        }
+        }        
 
         private static string GenerateJwtToken(AccountModel model)
         {
