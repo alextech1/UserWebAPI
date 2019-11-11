@@ -11,8 +11,8 @@ namespace UserWebAPI.Entities
 
         public string LastName { get; set; }
         public string Address { get; set; }
-        public ICollection<Status> OrderStatus { get; set; }
-        public ICollection<UserRole> UserRoles { get; set; }
+        //public ICollection<Status> OrderStatus { get; set; }
+        //public ICollection<UserRole> UserRoles { get; set; }
 
         [NotMapped]
         public byte[] PasswordSalt { get; set; }
