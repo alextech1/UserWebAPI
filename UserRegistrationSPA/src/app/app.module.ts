@@ -20,6 +20,10 @@ import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { StoreComponent } from './store/store.component';
 
 @NgModule({
    declarations: [
@@ -32,7 +36,11 @@ import { LogoutComponent } from './logout/logout.component';
       OrderComponent,
       CartComponent,
       CheckoutComponent,
-      LogoutComponent
+      LogoutComponent,
+      AdminComponent,
+      AdminLoginComponent,
+      ProfileComponent,
+      StoreComponent
    ],
    imports: [
       BrowserModule,

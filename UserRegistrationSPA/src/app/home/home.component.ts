@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   items: Array<any> = [];
+  role: Number;
 
   constructor() {
+    this.role = 1;
     this.items = [
       { name: 'assets/images/pizzapic1.jpg'},
       { name: 'assets/images/pizzapic2.jpg'},

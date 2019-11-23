@@ -32,7 +32,7 @@ namespace UserWebAPI
         {
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddTransient<YourDbContextSeedData>();
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -71,6 +71,7 @@ namespace UserWebAPI
                 .AddEntityFrameworkStores<DataContext>()
                 .AddDefaultTokenProviders();
 
+       
             services.AddScoped<IUserService, UserService>();
 
             services.AddMvc()
@@ -78,7 +79,7 @@ namespace UserWebAPI
                 .AddControllersAsServices();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, YourDbContextSeedData seeder)
         {
             if (env.IsDevelopment())
             {
@@ -101,7 +102,7 @@ namespace UserWebAPI
                     });
                 });
             }
-
+            seeder.SeedAdminUser();
             app.UseCors("CorsPolicy");
             app.UseMvc();
         }

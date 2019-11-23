@@ -6,7 +6,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '../shared/user.service';
 import { AuthService } from '../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
- 
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-log-in',
@@ -68,9 +69,12 @@ export class LogInComponent implements OnInit {
         .subscribe(
           (data:any) => {
             this.toastr.success("Login Successful");
+            console.log(data);
             localStorage.setItem("username", this.userLoginForm.get('UserName').value);
             console.log(localStorage.getItem("username"));
-            this.router.navigateByUrl('home');
+            localStorage.setItem("adminid", "");
+         //   this.router.navigateByUrl('home');
+           location.href = environment.baseUrl + "/home";
           }
         , 
         error => {

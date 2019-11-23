@@ -40,21 +40,34 @@ namespace UserWebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> Login([FromBody]AccountModel model)
         {
-            var user = await _userManager.FindByNameAsync(model.UserName);
-
-            if (user == null)
+            try
             {
-                return BadRequest(new { message = "Username or password is incorrect" });
-            }
+                var user = await _userManager.FindByNameAsync(model.UserName);
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-
-            if (result.Succeeded)
-            {
-                return Ok(new
+                if (user == null)
                 {
-                    token = GenerateJwtToken(model)
-                });
+                    return BadRequest(new { message = "Username or password is incorrect" });
+                }
+
+                if (user.Role == 0)
+                {
+                    return BadRequest(new { message = "Username or password is incorrect" });
+                }
+
+                var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
+
+                if (result.Succeeded)
+                {
+                    return Ok(new
+                    {
+                        id = user.Id,
+                        role = user.Role,
+                        token = GenerateJwtToken(model)
+                    });
+                }
+            }
+            catch (Exception e) {
+
             }
             return Unauthorized();
         }
@@ -72,7 +85,8 @@ namespace UserWebAPI.Controllers
                 Email = model.Email,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                Address = model.Address
+                Address = model.Address,
+                Role = model.Role
             };
 
             if (manager.Succeeded)

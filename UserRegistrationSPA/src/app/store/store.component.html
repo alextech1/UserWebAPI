@@ -1,0 +1,26 @@
+<h3 style="margin-top: 30px;">Store</h3>
+<div class="store"> 
+    <table class="table table-dark table-responsible" >
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Action</th>
+        </tr>
+        <tr *ngFor="let user of users">
+                <td>{{user.UserName}}</td>
+                <td>{{user.FirstName + " " +user.LastName}}</td>
+                <td>{{user.Email}}</td>
+                <td>
+
+                    <select class="form-control user_role" (change)="onMessageChanged($event.target.value)">
+                            <option value = "1"> The order is in the oven</option>
+                            <option value = "2"> The order is out for delivery</option>   
+                    </select>
+                </td>
+                <td> <a class="btn green" style="color:white; float:right"  href="javascript:void(0);" (click)="onSend(user.Id)">Send </a></td>
+            </tr>
+    </table>
+ <!--   <a class="btn green" style="color:white; float:right"  href="javascript:void(0);" (click)="onSave()">Save </a> -->
+</div>

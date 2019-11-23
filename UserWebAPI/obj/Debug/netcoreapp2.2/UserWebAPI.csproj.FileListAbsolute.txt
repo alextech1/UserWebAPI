@@ -12,3 +12,45 @@ C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\n
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorTargetAssemblyInfo.cache
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.dll
 C:\Users\cashamerica12345\Documents\UserWebAPI\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.pdb
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.deps.json
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.runtimeconfig.json
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.runtimeconfig.dev.json
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.dll
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.pdb
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.csprojResolveAssemblyReference.cache
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.csproj.CoreCompileInputs.cache
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorAssemblyInfo.cache
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorAssemblyInfo.cs
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.AssemblyInfoInputs.cache
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.AssemblyInfo.cs
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorTargetAssemblyInfo.cache
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.dll
+E:\Projects\FreelancerProject\UserWebAPI-master\NewProject\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.pdb
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.deps.json
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.runtimeconfig.json
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.runtimeconfig.dev.json
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.dll
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.pdb
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.csprojAssemblyReference.cache
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.csproj.CoreCompileInputs.cache
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorAssemblyInfo.cache
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorAssemblyInfo.cs
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.AssemblyInfoInputs.cache
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.AssemblyInfo.cs
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.dll
+C:\Users\cashamerica12345\Documents\Angular Project\new\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.pdb
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.deps.json
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.runtimeconfig.json
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.runtimeconfig.dev.json
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.dll
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\bin\Debug\netcoreapp2.2\UserWebAPI.pdb
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.csprojAssemblyReference.cache
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.csproj.CoreCompileInputs.cache
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorAssemblyInfo.cache
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorAssemblyInfo.cs
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.AssemblyInfoInputs.cache
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.AssemblyInfo.cs
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.RazorTargetAssemblyInfo.cache
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.dll
+C:\Users\cashamerica12345\Documents\Angular Project\UserWebAPI\UserWebAPI\obj\Debug\netcoreapp2.2\UserWebAPI.pdb

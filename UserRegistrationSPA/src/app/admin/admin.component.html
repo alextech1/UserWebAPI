@@ -1,0 +1,53 @@
+<h3 style="margin-top: 30px;">Admin Panel</h3>
+<a class="btn green" style="color:white; float:right"   [routerLink]="['/admin', { logout:1 }]">Logout </a> <br>
+
+<div style="margin-top:30px;margin-left: 5px;" class="row">
+   <!-- <div id="mySidenav" class="sidenav col-md-3" >
+        <a href="javascript:void(0);" class="actived" #roleMenu (click) ="onRoleClicked()">Role Management</a>
+        <a href="javascript:void(0);" #orderMenu (click) ="onOrderStatusClicked()">Order Status</a>
+    </div>
+    -->
+    <div class = "col-md-12">
+        <div class="role" #roleDiv> 
+            <table class="table table-dark table-responsible" >
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                </tr>
+                <tr *ngFor="let user of users">
+                        <td>{{user.UserName}}</td>
+                        <td>{{user.FirstName + " " +user.LastName}}</td>
+                        <td>{{user.Email}}</td>
+                        <td>
+                            <select class="form-control user_role" *ngIf="user.Role == 1" (change)="onRoleChanged(user.Id, $event.target.value)">
+                                    <option value = "1"> Member</option>
+                                    <option value = "2"> StoreAccount</option>   
+                            </select>
+                            <select class="form-control user_role" *ngIf="user.Role == 2" (change)="onRoleChanged(user.Id, $event.target.value)">
+                                    <option value = "2"> StoreAccount</option>
+                                    <option value = "1"> Member</option>   
+                            </select>
+                        </td>
+                    </tr>
+            </table>
+         <!--   <a class="btn green" style="color:white; float:right"  href="javascript:void(0);" (click)="onSave()">Save </a> -->
+        </div>
+        <div class="cls_hide" #orderDiv> 
+            <!--
+                <table class="table table-dark table-responsible" >
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Order</th>
+                    </tr>
+                </table>
+                -->
+            </div>
+    </div>
+</div>
+<script>
+
+</script>

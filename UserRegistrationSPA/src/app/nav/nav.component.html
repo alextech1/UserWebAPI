@@ -24,9 +24,12 @@
         <li class="nav-item" routerLinkActive="active">
             <a class="nav-link waves-light" [routerLink]="['/cart']" mdbWavesEffect>Cart</a>
           </li>
-        <!-- <li class="nav-item" routerLinkActive="active" style="float:right" >
-            <a class="nav-link waves-light" [routerLink]="['/logout']" mdbWavesEffect>LogOut</a>
-        </li> -->
+         <li class="nav-item" routerLinkActive="active" style="float:right" *ngIf="role == '2'" >
+            <a class="nav-link waves-light" [routerLink]="['/store']" mdbWavesEffect>Store</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" style="float:right" *ngIf="role == '1'" >
+          <a class="nav-link waves-light" [routerLink]="['/profile']" mdbWavesEffect>Profile</a>
+      </li>
       </ul>
     </div>
   </nav>

@@ -14,15 +14,24 @@ export class UserService {
   registerUser(user : User) : Observable<User> 
   {
     const body : User = {
+      Id:user.Id,
       FirstName:user.FirstName,
       LastName:user.LastName,
       UserName: user.UserName,
       Password: user.Password,
       Email: user.Email,
       Address: user.Address,
+      Role: user.Role,
+      OrderStatus: 0,
       Token: user.Token
     }
     return this.http.post<User>(this.rootUrl + 'api/User/Register', body);
+  }
+
+  
+  getAllUsers() 
+  {
+    return this.http.post<User>(this.rootUrl + 'api/admin/getusers', "");
   }
 
   getUser(id): Observable<User> {

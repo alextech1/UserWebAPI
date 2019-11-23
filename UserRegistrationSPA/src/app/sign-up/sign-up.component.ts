@@ -40,6 +40,7 @@ export class SignUpComponent implements OnInit {
     request.Password = this.userRegistrationForm.get('Password').value;
     request.Email = this.userRegistrationForm.get('Email').value;
     request.Address = this.userRegistrationForm.get('Email').value;
+    request.Role = 1;
 
     if (this.userRegistrationForm.valid) {
       //this.user = Object.assign({}, this.userRegistrationForm.value);

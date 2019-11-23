@@ -12,7 +12,7 @@ namespace UserWebAPI.Models
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
-
+        public  DbSet<OrderStatus> OrderStatus { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -27,6 +27,13 @@ namespace UserWebAPI.Models
                 u.ToTable("Role");
                 u.HasKey(x => x.Id);
             });
+
+            builder.Entity<OrderStatus>(u =>
+            {
+                u.ToTable("OrderStatus");
+                u.HasKey(x => x.Id);
+            });
+
             builder.Entity<IdentityUserRole<string>>(u =>
             {
                 u.ToTable("UserRole");
@@ -42,6 +49,7 @@ namespace UserWebAPI.Models
                 u.ToTable("UserLogin");
                 u.HasKey(x => new { x.ProviderKey, x.LoginProvider });
             });
+          
         }
     }
 }

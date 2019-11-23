@@ -8,6 +8,10 @@ import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { StoreComponent } from './store/store.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,8 +23,12 @@ export const appRoutes: Routes = [
       { path: 'order', component: OrderComponent},
       { path: 'cart', component: CartComponent},
       { path: 'product', component: ProductComponent},
+      { path: 'admin', component: AdminComponent},
       { path: 'checkout', component: CheckoutComponent},
-      { path: 'logout', component: LogoutComponent}
+      { path: 'logout', component: LogoutComponent},
+      { path: 'profile', component: ProfileComponent},
+      { path: 'store', component: StoreComponent},
+      { path: 'admin/login', component: AdminLoginComponent}
     ]
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full'},

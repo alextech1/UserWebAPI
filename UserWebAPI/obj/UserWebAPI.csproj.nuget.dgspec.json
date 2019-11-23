@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cashamerica12345\\Documents\\UserWebAPI\\UserWebAPI\\UserWebAPI\\UserWebAPI.csproj": {}
+    "C:\\Users\\cashamerica12345\\Documents\\Angular Project\\UserWebAPI\\UserWebAPI\\UserWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cashamerica12345\\Documents\\UserWebAPI\\UserWebAPI\\UserWebAPI\\UserWebAPI.csproj": {
+    "C:\\Users\\cashamerica12345\\Documents\\Angular Project\\UserWebAPI\\UserWebAPI\\UserWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cashamerica12345\\Documents\\UserWebAPI\\UserWebAPI\\UserWebAPI\\UserWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\cashamerica12345\\Documents\\Angular Project\\UserWebAPI\\UserWebAPI\\UserWebAPI.csproj",
         "projectName": "UserWebAPI",
-        "projectPath": "C:\\Users\\cashamerica12345\\Documents\\UserWebAPI\\UserWebAPI\\UserWebAPI\\UserWebAPI.csproj",
+        "projectPath": "C:\\Users\\cashamerica12345\\Documents\\Angular Project\\UserWebAPI\\UserWebAPI\\UserWebAPI.csproj",
         "packagesPath": "C:\\Users\\cashamerica12345\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cashamerica12345\\Documents\\UserWebAPI\\UserWebAPI\\UserWebAPI\\obj\\",
+        "outputPath": "C:\\Users\\cashamerica12345\\Documents\\Angular Project\\UserWebAPI\\UserWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

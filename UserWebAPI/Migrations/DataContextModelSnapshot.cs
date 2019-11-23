@@ -62,6 +62,21 @@ namespace UserWebAPI.Migrations
                     b.ToTable("UserRole");
                 });
 
+            modelBuilder.Entity("UserWebAPI.Entities.OrderStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("MessageId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrderStatus");
+                });
+
             modelBuilder.Entity("UserWebAPI.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -112,6 +127,8 @@ namespace UserWebAPI.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<int>("Role");
 
                     b.Property<string>("SecurityStamp");
 
