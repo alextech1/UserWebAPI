@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  navbarTopMargin: number = 0;
+
+  onNavHeight(topMargin: number) {
+    console.log(topMargin);
+    this.navbarTopMargin = topMargin;
+  }
+
   title = 'user-registration';
 }

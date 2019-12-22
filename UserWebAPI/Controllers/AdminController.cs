@@ -47,7 +47,7 @@ namespace UserWebAPI.Controllers
                     return BadRequest(new { message = "Username or password is incorrect" });
                 }
 
-                if (user.Role != 0)
+                if (user.Role != 0) //admin role = 0
                 {
                     return BadRequest(new { message = "The user has no admin permission" });
                 }
