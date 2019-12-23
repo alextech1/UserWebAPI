@@ -12,7 +12,8 @@ namespace UserWebAPI.Models
         public MappingProfile()
         {
             CreateMap<User, AccountModel>();
-            CreateMap<AccountModel, User>();            
+            CreateMap<AccountModel, User>();
+            //CreateMap<Product, Cart>();
         }
     }
 }
