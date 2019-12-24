@@ -34,12 +34,6 @@ namespace UserWebAPI.Models
                 u.HasKey(x => x.Id);
             });
 
-            builder.Entity<Cart>(u =>
-            {
-                u.ToTable("Cart");
-                u.HasKey(x => x.Id);
-            });
-
             builder.Entity<IdentityUserRole<string>>(u =>
             {
                 u.ToTable("UserRole");
@@ -57,6 +51,5 @@ namespace UserWebAPI.Models
             });
           
         }
-        public DbSet<UserWebAPI.Entities.Cart> Cart { get; set; }
     }
 }

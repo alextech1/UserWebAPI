@@ -13,7 +13,6 @@ namespace UserWebAPI.Models
         {
             CreateMap<User, AccountModel>();
             CreateMap<AccountModel, User>();
-            //CreateMap<Product, Cart>();
         }
     }
 }
