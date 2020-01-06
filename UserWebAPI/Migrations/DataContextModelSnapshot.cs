@@ -62,6 +62,23 @@ namespace UserWebAPI.Migrations
                     b.ToTable("UserRole");
                 });
 
+            modelBuilder.Entity("UserWebAPI.Entities.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cart");
+                });
+
             modelBuilder.Entity("UserWebAPI.Entities.OrderStatus", b =>
                 {
                     b.Property<int>("Id")
@@ -75,6 +92,23 @@ namespace UserWebAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OrderStatus");
+                });
+
+            modelBuilder.Entity("UserWebAPI.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Photo");
+
+                    b.Property<double>("Price");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("UserWebAPI.Entities.Role", b =>

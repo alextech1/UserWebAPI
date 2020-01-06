@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class OrderStatusService {
-  readonly rootUrl = "http://localhost:5000/" //connect to API
+  readonly rootUrl = "http://localhost:5000/" //listen to API
   constructor(private http: HttpClient) { }
 
   addOrderStatus(userId, messageId) 

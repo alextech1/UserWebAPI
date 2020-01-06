@@ -1,24 +1,51 @@
-<div id="container">
-  <div ng2-carouselamos class="slides-wrapper"
-    [items]="items"
-    [width]="900"
-    [$prev]="prev"
-    [$next]="next"
-    [$item]="item">
-</div>
 
-<ng-template #prev>
-  <img src="assets/images/iconarrowleft.png" id="left">
-</ng-template>
 
-<ng-template #next>
-  <img src="assets/images/iconarrowright.png" id="right">
-</ng-template>
-
-<ng-template #item let-item let-i="index">
-  <div class="items">
-    <img src="{{ item.name }}">
+<div id="index-banner" class="parallax-container">
+  <div class="section no-pad-bot">
+    <div class="container">
+      <br><br>
+      <h1 class="header center teal-text text-lighten-2">Join Us</h1>
+      <div class="row center">
+        <h3 class="header col s12 light">We sell and deliver products to customers that will improve health.</h3>
+      </div>
+      <div class="row center">
+        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+      </div>
+    </div>
+  </div>
+  <div class="parallax"><img src="https://mdbootstrap.com/img/Photos/Others/architecture.jpg" alt=""></div>
   </div>
 
-</ng-template>
+<div class="container">
+  <div class="section">
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+      <h3 class="center">Fast delivery</h3>
+      <p class="light">
+      We are the fastest delivery service in America.
+      </p>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+      <h3 class="center">Top quality</h3>
+      <p class="light">
+        We make sure the quality is great.
+      </p>
+      </div>
+    </div>
+
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center brown-text"><i class="material-icons">location_city</i></h2>
+      <h3 class="center">Trusted company</h3>
+      <p class="light">
+        This company has received 98% satisfaction.
+      </p>
+    </div>
+  </div>
 </div>

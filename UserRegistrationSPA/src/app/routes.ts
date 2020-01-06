@@ -12,12 +12,14 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { StoreComponent } from './store/store.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AddCartComponent } from './add-cart/add-cart.component';
+import { EditCartComponent } from './edit-cart/edit-cart.component';
 
 export const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
   {
     path: '', 
     children: [
+      { path: '', component: HomeComponent},
       { path: 'sign-up', component: SignUpComponent},
       { path: 'log-in', component: LogInComponent},
       { path: 'order', component: OrderComponent},
@@ -28,10 +30,12 @@ export const appRoutes: Routes = [
       { path: 'logout', component: LogoutComponent},
       { path: 'profile', component: ProfileComponent},
       { path: 'store', component: StoreComponent},
-      { path: 'admin/login', component: AdminLoginComponent}
+      { path: 'admin/login', component: AdminLoginComponent},
+      { path: 'add-cart', component: AddCartComponent },
+      { path: 'edit-cart', component: EditCartComponent },
     ]
   },
-  { path: '**', redirectTo: 'home', pathMatch: 'full'},
+  { path: '**', redirectTo: '', pathMatch: 'full'},
 ]; 
  
 

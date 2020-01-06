@@ -13,6 +13,8 @@ namespace UserWebAPI.Models
 
         public DbSet<User> Users { get; set; }
         public  DbSet<OrderStatus> OrderStatus { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Cart> Carts { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -33,6 +35,18 @@ namespace UserWebAPI.Models
                 u.ToTable("OrderStatus");
                 u.HasKey(x => x.Id);
             });
+
+            builder.Entity<Product>(u => {
+                u.ToTable("Product");
+                u.HasKey(x => x.Id);
+            });
+
+            builder.Entity<Cart>(u =>
+           {
+               u.ToTable("Cart");
+               u.HasKey(x => x.Id);
+
+           });
 
             builder.Entity<IdentityUserRole<string>>(u =>
             {

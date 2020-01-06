@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { DataTableModule } from 'ng-angular8-datatable';
+
 import { createCustomElement } from '@angular/elements';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 //import { AppRoutingModule } from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -24,6 +27,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StoreComponent } from './store/store.component';
+import { AddCartComponent } from './add-cart/add-cart.component';
+import { EditCartComponent } from './edit-cart/edit-cart.component';
 
 @NgModule({
    declarations: [
@@ -40,9 +45,12 @@ import { StoreComponent } from './store/store.component';
       AdminComponent,
       AdminLoginComponent,
       ProfileComponent,
-      StoreComponent
+      StoreComponent,
+      AddCartComponent,
+      EditCartComponent
    ],
    imports: [
+      HttpModule,
       BrowserModule,
       HttpClientModule,
       //AppRoutingModule,
@@ -52,7 +60,8 @@ import { StoreComponent } from './store/store.component';
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
       RouterModule.forRoot(appRoutes),
-      Ng2CarouselamosModule
+      Ng2CarouselamosModule,
+      DataTableModule,
    ],
    providers: [],
    bootstrap: [

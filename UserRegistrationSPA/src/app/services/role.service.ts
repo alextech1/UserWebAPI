@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class RoleService {
-  readonly rootUrl = "http://localhost:5000/" //connect to API
+  readonly rootUrl = "http://localhost:5000/" //listen to API
   constructor(private http: HttpClient) { }
 
   saveRole(user : User) : Observable<User> 

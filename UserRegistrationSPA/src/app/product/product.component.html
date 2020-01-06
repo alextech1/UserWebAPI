@@ -1,3 +1,28 @@
-<p>
-  product works!
-</p>
+<h3 style="margin-top: 60px">Product List</h3>
+<table class="table table-striped" [svData]="products" #sv="svDataTable" [svRowsOnPage]="5" svSortBy="name" svSortOrder="asc">
+  <thead>
+  <tr>
+      <th>
+          <sv-default-sorter by="name">Id</sv-default-sorter>
+      </th>
+      <th>Name</th>
+      <th>Photo</th>
+      <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let row of sv.data">
+      <td>{{ row.id }}</td>
+      <td>{{ row.name }}</td>
+      <td><img src="assets/images/{{ row.photo }}" width="50" alt="Photo"></td>
+      <td>{{ row.price }}</td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+      <td colspan="4">
+          <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+      </td>
+  </tr>
+  </tfoot>
+</table>

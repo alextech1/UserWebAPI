@@ -1,24 +1,38 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, flatMap } from 'rxjs/operators';
 import { Product } from '../entities/product.entity';
+import { environment } from 'src/environments/environment';
+import {catchError, retry} from 'rxjs/internal/operators';
+import {ProductRes} from '../res/product.res';
+
 
 @Injectable({
     providedIn: 'root'
   })
 export class ProductService {
     private products: Product[];
-
-    constructor() {
-        this.products = [
-        { id: 'p01', name: 'name 1', price: 100, photo: 'dummy1.jpg' },
-        { id: 'p02', name: 'name 2', price: 200, photo: 'dummy2.jpg' },
-        { id: 'po3', name: 'name 3', price: 300, photo: 'dummy3.jpg' }
-        ];
+    private baseUrl = environment.apiUrl;
+    public productModel: Product;
+    
+    constructor(private http: HttpClient) {
+        this.products = [];
     }
 
     
 
-    findAll(): Product[] {
-        return this.products;
+    findAll(searchStr: string): Observable<ProductRes>{
+        console.log('findall product');
+        const httpOptions = {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json',
+              //'Authorization': 'jwt-token'
+            })
+          };
+        
+        return this.http.post<ProductRes>(this.baseUrl + 'getProducts', {searchStr: ''}, httpOptions)
+            .pipe();
     }
 
     find(id: string): Product {
@@ -27,7 +41,7 @@ export class ProductService {
 
     private getSelectedIndex(id: string) {
         for (var i = 0; i < this.products.length; i++) {
-            if (this.products[i].id == id) {
+            if (this.products[i].id == parseInt(id)) {
                 return i;
             }
         }

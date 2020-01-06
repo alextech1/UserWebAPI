@@ -38,10 +38,12 @@ namespace UserWebAPI.Controllers
         [AllowAnonymous]
         [Route("api/auth/Login")]
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody]AccountModel model)
+        public async Task<IActionResult> Login([FromBody]AccountModel model )
         {
             try
             {
+                if (model == null)
+                    model = new AccountModel();
                 var user = await _userManager.FindByNameAsync(model.UserName);
 
                 if (user == null)

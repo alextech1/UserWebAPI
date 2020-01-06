@@ -1,0 +1,18 @@
+<h3>Add Cart</h3>
+<div class="container">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="product">Product:</label>
+          <select formControlName="product" name="product" class="form-control" id="product">
+            <option [value]="product.Id" *ngFor="let product of products">{{product.Name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <input formControlName="quantity" placeholder="Quantity" name="quantity" class="form-control" id="quantity" type="number">
+        </div>
+    
+        <button class="btn btn-success">Create</button>
+      </form>
+</div>

@@ -103,6 +103,7 @@ namespace UserWebAPI
                 });
             }
             seeder.SeedAdminUser();
+            seeder.SeedProducts();
             app.UseCors("CorsPolicy");
             app.UseMvc();
         }

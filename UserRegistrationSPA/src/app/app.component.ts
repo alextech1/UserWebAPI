@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   navbarTopMargin: number = 0;
-
+  
   onNavHeight(topMargin: number) {
     console.log(topMargin);
     this.navbarTopMargin = topMargin;

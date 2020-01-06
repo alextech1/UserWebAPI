@@ -16,7 +16,7 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products = this.productService.findAll();
+    //this.products = this.productService.findAll('');
     console.log(this.products);
 
   }

@@ -1,31 +1,42 @@
-<h3 style="margin-top: 30px">Cart Info</h3>
-<table class="table table-dark table-responsible" style="margin-top:30px">
- 
-    <tr>
-        <th>Option</th>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Photo</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Sub Total</th>
-    </tr>
-    <tr *ngFor="let item of items">
-        <td>
-            <a (click)="remove(item.product.id)">X</a>
-        </td>
-        <td>{{item.product.id}}</td>
-        <td>{{item.product.name}}</td>
-        <td>
-            <img src="assets/images/pizzaicon.png" width="50">
-        </td>
-        <td>{{item.product.price}}</td>
-        <td>{{item.quantity}}</td>
-        <td>{{item.product.price * item.quantity}}</td>
-    </tr>
-    <tr>
-        <td colspan="6"><b>Total</b></td>
-        <td><b>{{total}}</b></td>
-    </tr>
+<h3 style="margin-top: 30px">Cart List</h3>
+
+<table class="table table-striped" [svData]="carts" #sv="svDataTable" [svRowsOnPage]="5" svSortBy="name"
+    svSortOrder="asc">
+    <thead>
+        <tr>
+            <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of sv.data">
+            <td>
+                <button (click)="remove(row.Id)" class="btn btn-danger">Delete</button>
+                <button (click)="update(row.Id, row.Quantity)" class="btn btn-info">Edite</button>
+            </td>
+            <td>{{row.ProductId}}</td>
+            <td>{{row.Name}}</td>
+            <td>
+                <img src="assets/images/{{ row.Photo }}" width="50" alt="Photo" />
+            </td>
+            <td>{{row.Price}}</td>
+            <td>{{row.Quantity}}</td>
+            <td>{{row.Price * row.Quantity}}</td>
+        </tr>
+        <tr>
+            <td colspan="6"><b>Total</b></td>
+            <td><b>{{total}}</b></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">
+                <sv-bootstrap-paginator [rowsOnPageSet]="[5, 10, 25]"></sv-bootstrap-paginator>
+            </td>
+        </tr>
+    </tfoot>
 </table>
-<a class="btn green" style="color:white; float:right"  [routerLink]="['/checkout']">Checkout </a>
+
+<div>
+    <button (click)="add()" class="btn btn-primary">Add Cart</button>
+</div>
