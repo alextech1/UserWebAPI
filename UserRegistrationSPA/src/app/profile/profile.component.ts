@@ -22,7 +22,8 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private roleService: RoleService,
     private orderStatusService: OrderStatusService,
-    private Element: ElementRef) { }
+    private Element: ElementRef) 
+    { }
     private users: User[] = [];
     private message: string;
 

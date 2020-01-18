@@ -10,6 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using UserWebAPI.Data;
 using UserWebAPI.Dtos;
 using UserWebAPI.Entities;
 using UserWebAPI.Models;
@@ -108,8 +109,8 @@ namespace UserWebAPI.Controllers
         [Route("api/admin/saveRole", Name = "SaveRole")]
         [HttpPost]
         public async Task<IActionResult> SaveRole([FromBody]AccountModel model) //add async Task<Result>
-        {
-       
+        {           
+
             var userStore = _mapper.Map<User>(model);
             var user = await _userManager.FindByNameAsync(model.UserName);
             user.Role = userStore.Role;

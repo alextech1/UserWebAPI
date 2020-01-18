@@ -14,12 +14,14 @@ import { StoreComponent } from './store/store.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddCartComponent } from './add-cart/add-cart.component';
 import { EditCartComponent } from './edit-cart/edit-cart.component';
+import { FinanceChartComponent } from './finance-chart/finance-chart.component';
 
 export const appRoutes: Routes = [
   {
     path: '', 
     children: [
-      { path: '', component: HomeComponent},
+      { path: '', redirectTo: 'home', pathMatch: 'full'},
+      { path: 'home', component: HomeComponent},
       { path: 'sign-up', component: SignUpComponent},
       { path: 'log-in', component: LogInComponent},
       { path: 'order', component: OrderComponent},
@@ -33,9 +35,9 @@ export const appRoutes: Routes = [
       { path: 'admin/login', component: AdminLoginComponent},
       { path: 'add-cart', component: AddCartComponent },
       { path: 'edit-cart', component: EditCartComponent },
+      { path: 'finance-chart', component: FinanceChartComponent }
     ]
-  },
-  { path: '**', redirectTo: '', pathMatch: 'full'},
+  }
 ]; 
  
 

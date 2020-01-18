@@ -18,7 +18,7 @@ public class YourDbContextSeedData
     {
         var product1 = new Product
         {
-            Name = "Christmas Book",
+            Name = "Medicine",
             Photo = "pizzapic1.jpg",
             Price = 5
         };
@@ -30,7 +30,7 @@ public class YourDbContextSeedData
 
         var product2 = new Product
         {
-            Name = "NewYear Book",
+            Name = "Vegetables",
             Photo = "pizzapic2.jpg",
             Price = 4
         };
@@ -43,7 +43,7 @@ public class YourDbContextSeedData
 
         var product3 = new Product
         {
-            Name = "T-Shirt",
+            Name = "Alcon Eye Drops",
             Photo = "pizzapic3.jpg",
             Price = 15
         };

@@ -14,26 +14,38 @@ using System.Threading.Tasks;
 using UserWebAPI.Dtos;
 using UserWebAPI.Entities;
 using UserWebAPI.Models;
+using UserWebAPI.Data;
 using System.Configuration;
- 
+using System.Net.Http;
 
 namespace UserWebAPI.Controllers
 {
     public class OrderStatusController : ControllerBase
     {
         private DataContext dataContext;
+        private PushNotificationLogic pushNotificationLogic;
 
         public OrderStatusController(DataContext context)
         {
             this.dataContext = context;
+            this.pushNotificationLogic = new PushNotificationLogic(context);
         }
+
+
 
         [AllowAnonymous]
         [Route("api/getOrderStatus")]
         [HttpPost]
         public async Task<IActionResult> GetOrderStatus([FromBody] int UserId)
         {
+            string title = "";
+            string body = "";
+            object data = "";
+
             List<OrderStatus> orderStatus = dataContext.OrderStatus.ToList();
+            User userItem = dataContext.Users.Find(UserId);
+            string UserName = userItem.UserName;
+
             for (int i = 0; i < orderStatus.Count(); i++)
             {
                 if (orderStatus[i].UserId == UserId)
@@ -41,9 +53,18 @@ namespace UserWebAPI.Controllers
                     string message;
                     if (orderStatus[i].MessageId == 1)
                     {
-                        message = "The order is in the oven";
+                        message = "The order is being prepared";                   
                     }
-                    else message = "The order is out of delivery";
+                    else 
+                    { 
+                        message = "The order is out of delivery";                        
+                    }
+
+
+                    title = "GetOrderStatus";
+                    body = message;
+
+                    this.pushNotificationLogic.PushNotification(body, title, UserName);
 
                     return Ok(new
                     {
@@ -51,7 +72,10 @@ namespace UserWebAPI.Controllers
                     });
                 }
             }
+            title = "GetOrderStatus";
+            body = "There is no order status";
 
+            this.pushNotificationLogic.PushNotification(body, title, UserName);
             return BadRequest(new { message = "There is no order status" });
 
         }
@@ -61,23 +85,43 @@ namespace UserWebAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddOrderStatus([FromBody]Status model)
         {
-
-            List<OrderStatus> orderStatus = dataContext.OrderStatus.ToList();
-            for (int i = 0; i < orderStatus.Count(); i++)
+            try
             {
-                if (orderStatus[i].UserId == model.UserId)
-                    dataContext.OrderStatus.Remove(orderStatus[i]);
+                string title = "Add Order Status";
+                string body = "Success";
+                string UserName = "";
+
+                List<OrderStatus> orderStatus = dataContext.OrderStatus.ToList();
+                User user = dataContext.Users.Find(model.UserId);
+                UserName = user.UserName;
+
+                for (int i = 0; i < orderStatus.Count(); i++)
+                {
+                    if (orderStatus[i].UserId == model.UserId)
+                        dataContext.OrderStatus.Remove(orderStatus[i]);
+
+
+
+                }
+                OrderStatus order = new OrderStatus();
+                order.UserId = model.UserId;
+                order.MessageId = model.MessageId;
+                dataContext.OrderStatus.Add(order);
+                dataContext.SaveChanges();
+                //var pushSent = await PushNotificationLogic.SendPushNotification(tokens, title, body, data);
+                this.pushNotificationLogic.PushNotification(body, title, UserName);
+
+                return Ok(new
+                {
+                    message = "Success"
+                });
+            } catch (Exception ex)
+            {
+                return Ok(new
+                {
+                    message = "Failed"
+                });
             }
-            OrderStatus order = new OrderStatus();
-            order.UserId = model.UserId;
-            order.MessageId = model.MessageId;
-            dataContext.OrderStatus.Add(order);
-            dataContext.SaveChanges();
-            return Ok(new
-            {
-                message = "Success"
-            });
-
-        }
+        }       
     }
 }

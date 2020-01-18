@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,9 @@ export class HomeComponent implements OnInit {
   role: Number;
 
 
-  constructor() {   
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private router: Router) {   
     this.role = 1;
 
   }

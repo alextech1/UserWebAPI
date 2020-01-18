@@ -29,6 +29,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { StoreComponent } from './store/store.component';
 import { AddCartComponent } from './add-cart/add-cart.component';
 import { EditCartComponent } from './edit-cart/edit-cart.component';
+import { ChartModule, LineSeriesService, CategoryService, } from '@syncfusion/ej2-angular-charts';
+import { FinanceChartComponent } from './finance-chart/finance-chart.component';
 
 @NgModule({
    declarations: [
@@ -47,8 +49,9 @@ import { EditCartComponent } from './edit-cart/edit-cart.component';
       ProfileComponent,
       StoreComponent,
       AddCartComponent,
-      EditCartComponent
-   ],
+      EditCartComponent,
+      FinanceChartComponent,
+      ],
    imports: [
       HttpModule,
       BrowserModule,
@@ -56,14 +59,18 @@ import { EditCartComponent } from './edit-cart/edit-cart.component';
       //AppRoutingModule,
       FormsModule,
       ReactiveFormsModule,
-      //REQUIREDforngModeltags\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\nHttpClientModule',
+      //REQUIREDforngModeltags\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\nHttpClientModule',
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       Ng2CarouselamosModule,
       DataTableModule,
+      ChartModule
    ],
-   providers: [],
+   providers: [
+      LineSeriesService,
+      CategoryService
+   ],
    bootstrap: [
       AppComponent
    ]

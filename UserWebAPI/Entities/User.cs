@@ -12,6 +12,7 @@ namespace UserWebAPI.Entities
         public string LastName { get; set; }
         public string Address { get; set; }
         public int Role { get; set; }
+        public string Token { get; set; }
         [NotMapped]
         public byte[] PasswordSalt { get; set; }
     }
