@@ -1,0 +1,16 @@
+e:\WORK\ASP.NET\backup\UserWebAPI\bin\Release\netcoreapp2.2\appsettings.Development.json
+e:\WORK\ASP.NET\backup\UserWebAPI\bin\Release\netcoreapp2.2\appsettings.json
+e:\WORK\ASP.NET\backup\UserWebAPI\bin\Release\netcoreapp2.2\Properties\launchSettings.json
+e:\WORK\ASP.NET\backup\UserWebAPI\bin\Release\netcoreapp2.2\UserWebAPI.deps.json
+e:\WORK\ASP.NET\backup\UserWebAPI\bin\Release\netcoreapp2.2\UserWebAPI.runtimeconfig.json
+e:\WORK\ASP.NET\backup\UserWebAPI\bin\Release\netcoreapp2.2\UserWebAPI.runtimeconfig.dev.json
+e:\WORK\ASP.NET\backup\UserWebAPI\bin\Release\netcoreapp2.2\UserWebAPI.dll
+e:\WORK\ASP.NET\backup\UserWebAPI\bin\Release\netcoreapp2.2\UserWebAPI.pdb
+e:\WORK\ASP.NET\backup\UserWebAPI\obj\Release\netcoreapp2.2\UserWebAPI.csprojAssemblyReference.cache
+e:\WORK\ASP.NET\backup\UserWebAPI\obj\Release\netcoreapp2.2\UserWebAPI.RazorAssemblyInfo.cache
+e:\WORK\ASP.NET\backup\UserWebAPI\obj\Release\netcoreapp2.2\UserWebAPI.RazorAssemblyInfo.cs
+e:\WORK\ASP.NET\backup\UserWebAPI\obj\Release\netcoreapp2.2\UserWebAPI.AssemblyInfoInputs.cache
+e:\WORK\ASP.NET\backup\UserWebAPI\obj\Release\netcoreapp2.2\UserWebAPI.AssemblyInfo.cs
+e:\WORK\ASP.NET\backup\UserWebAPI\obj\Release\netcoreapp2.2\UserWebAPI.RazorTargetAssemblyInfo.cache
+e:\WORK\ASP.NET\backup\UserWebAPI\obj\Release\netcoreapp2.2\UserWebAPI.dll
+e:\WORK\ASP.NET\backup\UserWebAPI\obj\Release\netcoreapp2.2\UserWebAPI.pdb

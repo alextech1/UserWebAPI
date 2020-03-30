@@ -23,17 +23,17 @@ namespace UserWebAPI.Controllers
         [AllowAnonymous]
         [Route("api/setToken")]
         [HttpPost]
-        public async Task<IActionResult> SetToken([FromBody] string Token, [FromBody] string UserEmail)
+        public async Task<IActionResult> SetToken([FromBody] TokenModel model)
         {
             string message = "Token has been set";
-            User userItem = dataContext.Users.Where(x => x.Email.CompareTo(UserEmail) == 0).FirstOrDefault();
+            User userItem = dataContext.Users.Where(x => x.Email.CompareTo(model.UserEmail) == 0).FirstOrDefault();
 
             if (userItem == null)
             {
                 message = "Username is invalid";
             } else
             {
-                userItem.Token = Token;
+                userItem.Token = model.Token;
                 dataContext.SaveChanges();
             }
 

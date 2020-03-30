@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_light"
+    tools:context=".ShowProducts"
+    >
+
+    <Button
+        android:id="@+id/get_products"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
+        android:padding="12dp"
+        android:text="Get Products"
+        android:onClick="getCarts"
+
+        />
+
+    <Button
+        android:id="@+id/get_prod_using_param"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
+        android:padding="12dp"
+        android:text="Get Products using Route param"
+        android:onClick="getProdUsingRouteParam"
+        />
+
+    <Button
+        android:id="@+id/get_prod_using_query"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
+        android:padding="12dp"
+        android:text="Get Products using query"
+        android:onClick="getProdsUsingQuery"
+        />
+
+    <Button
+        android:id="@+id/post_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"
+        android:padding="12dp"
+        android:text="Post Product"
+        android:onClick="postProduct"
+        />
+
+    <include
+        layout="@layout/app_bar_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

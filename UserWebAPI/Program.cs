@@ -21,6 +21,7 @@ namespace UserWebAPI
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>().UseKestrel().UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
+                .UseUrls("http://0.0.0.0:5000")
                 .UseDefaultServiceProvider((context, options) =>
                 {
                     options.ValidateScopes = context.HostingEnvironment.IsDevelopment();

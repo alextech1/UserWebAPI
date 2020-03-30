@@ -22,16 +22,19 @@ namespace UserWebAPI.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private DataContext dataContext;
 
         public AdminController(
             IMapper mapper,
             UserManager<User> userManager,
-            SignInManager<User> signInManager
+            SignInManager<User> signInManager,
+            DataContext context
         )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
+            dataContext = context;
         }
 
         [AllowAnonymous]
@@ -99,7 +102,7 @@ namespace UserWebAPI.Controllers
                     return Ok(new
                     {
                         user = users[i]
-                    }); ;
+                    });
                 }
             }
             return BadRequest(new { message = "No Such User" });
@@ -112,25 +115,28 @@ namespace UserWebAPI.Controllers
         {           
 
             var userStore = _mapper.Map<User>(model);
-            var user = await _userManager.FindByNameAsync(model.UserName);
-            user.Role = userStore.Role;
-            try
+            var user = this.dataContext.Users.Where(t => t.UserName.CompareTo(model.UserName) == 0).FirstOrDefault();
+            if (user != null)
             {
-                var manager = await _userManager.UpdateAsync(user);
-
-                if (manager.Succeeded)
+                user.Role = userStore.Role;
+                try
                 {
-                    return Ok(new
-                    {
-                        result = "success"
-                    });
+                    var manager = await _userManager.UpdateAsync(user);
 
+                    if (manager.Succeeded)
+                    {
+                        return Ok(new
+                        {
+                            result = "success"
+                        });
+
+                    }
                 }
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-            }
+                catch (Exception e)
+                {
+                    e.ToString();
+                }
+            } 
             return BadRequest("");
         }
 

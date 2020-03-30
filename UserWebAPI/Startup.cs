@@ -55,8 +55,8 @@ namespace UserWebAPI
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "http://localhost:5000",
-                    ValidAudience = "http://localhost:5000",
+                    ValidIssuer = "http://0.0.0.0:5000",//localhost
+                    ValidAudience = "http://0.0.0.0:5000",//localhost
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("KeyForSignInSecret@1234")) //alternative: GetBytes(appSettings.Secret);
                 };
             });

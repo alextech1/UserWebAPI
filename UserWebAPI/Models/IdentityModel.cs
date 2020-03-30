@@ -12,7 +12,7 @@ namespace UserWebAPI.Models
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
-        public  DbSet<OrderStatus> OrderStatus { get; set; }
+        public DbSet<OrderStatus> OrderStatus { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
