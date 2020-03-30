@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light"
+    android:fitsSystemWindows="true"
+
     tools:context=".ShowProducts"
     >
 
-    <Button
-        android:id="@+id/get_products"
+    <include
+        layout="@layout/app_bar_home"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="20dp"
-        android:padding="12dp"
-        android:text="Get Products"
-        android:onClick="getCarts"
+        android:layout_height="match_parent" />
 
-        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center">
 
-    <Button
+        <Button
+            android:id="@+id/get_products"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:foregroundGravity="center"
+            android:onClick="getCarts"
+            android:padding="12dp"
+            android:text="Get Products"
+
+            />
+
+        <Button
         android:id="@+id/get_prod_using_param"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="20dp"
         android:padding="12dp"
         android:text="Get Products using Route param"
         android:onClick="getProdUsingRouteParam"
@@ -39,8 +49,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="20dp"
         android:padding="12dp"
         android:text="Get Products using query"
         android:onClick="getProdsUsingQuery"
@@ -51,17 +59,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_marginHorizontal="30dp"
-        android:layout_marginVertical="20dp"
         android:padding="12dp"
         android:text="Post Product"
         android:onClick="postProduct"
         />
+    </LinearLayout>
 
-    <include
-        layout="@layout/app_bar_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        android:fitsSystemWindows="true"
+
+        android:visibility="invisible"
+        app:headerLayout="@layout/nav_header_home"
+        app:menu="@menu/activity_home_drawer" />
 
 
-</LinearLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

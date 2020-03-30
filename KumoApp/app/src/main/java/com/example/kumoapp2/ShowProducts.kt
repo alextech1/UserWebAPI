@@ -26,7 +26,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ShowProducts : AppCompatActivity()
+class ShowProducts : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
     private val TAG = "ShowProducts"
     lateinit var myApi: IMyAPI
@@ -62,6 +62,19 @@ class ShowProducts : AppCompatActivity()
 
     fun postProduct(view: View) {
 
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem):Boolean {
+        when (item.itemId) {
+            R.id.nav_sign_out -> {
+                Log.d("Testing logout ", "user")
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(this@ShowProducts, LoginActivity::class.java))
+                finish()
+            }
+        }
+
+        return true
     }
 
 
