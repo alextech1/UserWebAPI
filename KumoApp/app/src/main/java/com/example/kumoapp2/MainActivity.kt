@@ -41,6 +41,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val categoryListAdapter = CategoryListGridRecyclerAdapter()
         recycler_view.adapter = categoryListAdapter
         categoryListAdapter.setProductList(generateDummyData())
+        
+        categoryListAdapter.setOnItemClickListener { category, pos ->
+            if (category.id == 1)
+            {
+                lateinit var catClick: Intent
+                if(category.id == 1)
+                {
+                    catClick = Intent(this, ShowProducts::class.java)
+                }
+
+                startActivity(catClick)
+            }
+        }
 
         val navView: NavigationView = findViewById(R.id.nav_view)
         navView.setNavigationItemSelectedListener(this)
@@ -70,17 +83,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         return listOfCategory
     }
-
-    /*override fun onRecyclerViewItemClick(category: Category, position: Int)
-    {
-        lateinit var catClick: Intent
-        if(category.id == 1)
-        {
-            catClick = Intent(this, ShowProducts::class.java)
-        }
-
-        startActivity(catClick)
-    }*/
 
     override fun onNavigationItemSelected(item: MenuItem):Boolean {
         when (item.itemId) {
