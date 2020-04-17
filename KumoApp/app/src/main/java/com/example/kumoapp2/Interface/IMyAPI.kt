@@ -9,15 +9,13 @@ import io.reactivex.Observable
 import retrofit2.http.Headers
 
 interface IMyAPI {
-    //Authorization
-    //@Headers("Content-Type:application/json",
-    //    "Authorization:key=AUTHKEYGOESHERE")
 
     @POST("api/User/Register")
-    fun registerUser(@Body user: User):Observable<User>
+    suspend fun registerUser(@Body user: User): User
 
     @POST("api/auth/Login")
-    fun loginUser(@Body user: User) //not observable? :Observable<String>
+    fun loginUser():Call<LoginRes>
+    //fun loginUser(@Body login: LoginRes) //not observable? :Observable<String>
 
     @POST("api/getProducts")
     fun findAll():Call<List<Product>>

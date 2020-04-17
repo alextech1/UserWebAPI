@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
     request.UserName = this.userRegistrationForm.get('UserName').value;
     request.Password = this.userRegistrationForm.get('Password').value;
     request.Email = this.userRegistrationForm.get('Email').value;
-    request.Address = this.userRegistrationForm.get('Email').value;
+    request.Address = this.userRegistrationForm.get('Address').value;
     request.Role = 1;
 
     if (this.userRegistrationForm.valid) {

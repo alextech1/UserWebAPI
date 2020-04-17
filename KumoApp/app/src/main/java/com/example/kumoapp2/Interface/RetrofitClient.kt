@@ -1,5 +1,6 @@
 package com.example.kumoapp2.Interface
 
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -9,7 +10,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitClient {
     private var instance: Retrofit? = null
-    private const val BASE_URL = "http://localhost:5000/";
+    private const val BASE_URL = "http://192.168.198.1:5000/";
 
     fun getInstance(): Retrofit {
         if (instance == null)
@@ -21,6 +22,9 @@ object RetrofitClient {
         return instance!!
     }
 
-
+    val webservice by lazy {
+        Retrofit.Builder()
+            getInstance().create(IMyAPI::class.java)
+    }
 
 }

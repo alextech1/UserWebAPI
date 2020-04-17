@@ -43,16 +43,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         categoryListAdapter.setProductList(generateDummyData())
         
         categoryListAdapter.setOnItemClickListener { category, pos ->
+            lateinit var catClick: Intent
             if (category.id == 1)
             {
-                lateinit var catClick: Intent
-                if(category.id == 1)
-                {
-                    catClick = Intent(this, ShowProducts::class.java)
-                }
-
-                startActivity(catClick)
+                catClick = Intent(this, ShowProducts::class.java)
             }
+            startActivity(catClick)
         }
 
         val navView: NavigationView = findViewById(R.id.nav_view)

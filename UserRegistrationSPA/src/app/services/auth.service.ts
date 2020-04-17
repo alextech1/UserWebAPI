@@ -23,7 +23,7 @@ public get currentUserValue(): User {
 }
 
 login(model: any) {
-  return this.http.post(this.baseUrl + 'login', model).pipe(
+  return this.http.post(this.baseUrl + 'login', model).pipe( //api/auth/ + login
     map((response: any) => {
       const user = response;
       console.log(response);

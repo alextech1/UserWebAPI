@@ -40,31 +40,6 @@ class LoginActivity : AppCompatActivity() {
             doLogin()
         }
 
-        /*
-        login_button.setOnClickListener {
-            val dialog = SpotsDialog.Builder().setContext(this@LoginActivity).build()
-
-            dialog.show()
-            doLogin();
-
-            val user = User(username_edittext_register.toString(), password_edittext_login.toString())
-            compositeDisposable.addAll(iMyAPI.loginUser(user)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-
-                    {s ->
-                        Toast.makeText(this@LoginActivity, s, Toast.LENGTH_SHORT).show()
-                        dialog.dismiss()
-                    },
-                    {
-                        t: Throwable? ->
-                        Toast.makeText(this@LoginActivity, t!!.message, Toast.LENGTH_SHORT).show()
-                        dialog.dismiss()
-
-                    }))
-
-        }*/
     }
 
     private fun doLogin() {
@@ -118,17 +93,5 @@ class LoginActivity : AppCompatActivity() {
         } else {
             Toast.makeText(baseContext, "Login failed.", Toast.LENGTH_SHORT).show()
         }
-
-        /*FOR VERIFICATION MODE:
-            if(currentUser != null) {
-            if(currentUser.isEmailVerified {
-                startActivity(Intent(this, HomeActivity::class.java))
-                finish()
-            } else {
-                Toast.makeText(
-                    baseContext, "Please verify your email address",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }*/
     }
 }
