@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, Output, ElementRef, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,16 +9,24 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   @Output() navHeight: EventEmitter<number> = new EventEmitter();
-  @ViewChild('navbar') navbar: ElementRef;
+  @ViewChild('navbar', {static: true}) navbar: ElementRef;
 
   role: string;
-  constructor() { }
+  authenticated: boolean;
 
-  ngOnInit() { 
+  constructor(private authService: AuthService) { }
+
+  ngOnInit() {
     this.navHeight.next(this.navbar.nativeElement.offsetHeight);
-    this.role = localStorage.getItem("role");
-    console.log("fe");
+    this.role = localStorage.getItem('role');
     console.log(this.role);
+    this.authenticated = this.authService.isAuthenticated();
+
+    if (this.authenticated === true)
+    {
+      console.log('authenticated is true');
+    }
+
   }
 
 }

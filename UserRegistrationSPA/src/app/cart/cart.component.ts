@@ -30,8 +30,14 @@ export class CartComponent implements OnInit {
   }
 
   loadCart(): void {
+    this.userId = localStorage.getItem('id');
+    this.bodyData = {
+      userId: this.userId
+    };
+
     this.total = 0;
-    this.cartService.findAll('').subscribe(resp => {
+    //this.cartService.findAll('').subscribe(resp => {
+    this.cartService.findCartByUserId(this.bodyData).subscribe(resp => {
       console.log('resp', resp);
       if (resp) {
         if (resp.message === 'success') {

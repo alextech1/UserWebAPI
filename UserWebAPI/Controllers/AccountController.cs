@@ -51,7 +51,7 @@ namespace UserWebAPI.Controllers
                     return BadRequest(new { message = "Username or password is incorrect" });
                 }
 
-                if (user.Role == 0)
+                if (user.Role == 0) //user role = 1
                 {
                     return BadRequest(new { message = "Username or password is incorrect" });
                 }
@@ -68,7 +68,7 @@ namespace UserWebAPI.Controllers
                     });
                 }
             }
-            catch (Exception e) {
+            catch {
 
             }
             return Unauthorized();
@@ -81,6 +81,7 @@ namespace UserWebAPI.Controllers
         {
             var userStore = _mapper.Map<User>(model);
             var manager = await _userManager.CreateAsync(userStore, model.Password);
+
             var user = new User
             {
                 UserName = model.UserName,
@@ -102,8 +103,9 @@ namespace UserWebAPI.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim (ClaimTypes.NameIdentifier, model.Id.ToString()),
-                new Claim (ClaimTypes.Name, model.UserName)
+                //new Claim (ClaimTypes.NameIdentifier, model.Id.ToString()),
+                //new Claim (ClaimTypes.Name, model.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId, model.UserName)
             };
 
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));

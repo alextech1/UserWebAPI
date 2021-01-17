@@ -8,8 +8,10 @@ namespace UserWebAPI.Models
     public class AddCartModel
     {
         public int cartId { get; set; }
-        public int userId { get; set; }
         public int productId { get; set; }
-        public int quantity { get; set; }
+        public string quantity { get; set; }
+        public string userId { get; set; }
+        
+        
     }
 }

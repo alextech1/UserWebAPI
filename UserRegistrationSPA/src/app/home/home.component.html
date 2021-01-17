@@ -1,52 +1,90 @@
-<div id="index-banner" class="parallax-container">
-  <div class="section no-pad-bot">
-    <div class="container">
-      <br><br>
-      <h1 class="header center teal-text text-lighten-2">Join Us</h1>
-      <div class="row center">
-        <h3 class="header col s12 light">We sell and deliver products to customers that will improve health.</h3>
-      </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+<div class="wpb_column vc_column_container">
+  <div class="wpb_wrapper">
+    <div class="fw-section hb-fw-599b22a654ae9" style="background-color:#000000;
+        background-image:url(https://mdbootstrap.com/img/Photos/Others/architecture.jpg);
+        background-size:cover; padding-top:40px; padding-bottom:60px;">
+      <div class="row fw-content-wrap">
+        <div class="col s12 nbm">
+          <div id="learning-automated-div" style="text-align: center; font-size: 48px;
+              line-height: 52px; padding: 100px 0px 0px 0px;">
+            <span style="color:#008080;">WELCOME!</span></div>
+          <div style="text-align: center; font-size: 18px; line-height: 22px; padding: 0 0px 0px 0px;">
+            <span style="color:#008080; text-shadow: 1px 1px 1px #969696;">
+              We sell and deliver products to customers that will improve health.</span><br />
+            <span style="color:#008080; text-shadow: 1px 1px 1px #969696;">
+              Get started today:</span></div>
+          <div style="text-align: center;"><br />
+            <a href="/sign-up" type="button" class="btn btn-info">Sign
+              Up</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="parallax"><img src="https://mdbootstrap.com/img/Photos/Others/architecture.jpg" alt=""></div>
+</div>
+
+
+<div *ngIf="images">
+  <div class="mySlides slideshow-container">
+      <img *ngFor="let image of images; let i=index" 
+          [src]="image" 
+          [ngClass]="{'image-active': selectedindex == i}">  
+
+      <div style="text-align:center; display:inline-block;"  *ngFor="let dot of images; let i=index">
+          <span id="dotslide" class="dot" 
+              (click)="selectImage(i)"
+              [ngClass]="{'active': selectedindex == i}">
+          </span>
+      </div>
   </div>
+</div>
+
+<br /><br />
 
 <div class="container">
   <div class="section">
-  <div class="row">
-    <div class="col s12 m4">
-      <div class="icon-block">
-        <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-      <h3 class="center">Fast delivery</h3>
-      <p class="light">
-      We are the fastest delivery service in America.
-      </p>
+    <div class="banner" style="text-align:center; background-size:cover; padding-top:40px; padding-bottom:100px; ">
+      <div class="banner-content">
+        <h1>The Kumo Store</h1>
+        <p>We provide medicine, technology for health care, and deliver products.
+          You will also be able to track the status of your order.</p>
+        <a href="https://facebook.com" class="btn btn-primary">CLICK</a>
       </div>
     </div>
 
-    <div class="col s12 m4">
-      <div class="icon-block">
-        <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-      <h3 class="center">Top quality</h3>
-      <p class="light">
-        We make sure the quality is great.
-      </p>
+
+
+
+
+    <div class="row">
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+          <h3 class="center">Fast delivery</h3>
+          <p class="light">
+            We are the fastest delivery service in America.
+          </p>
+        </div>
       </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+          <h3 class="center">Top quality</h3>
+          <p class="light">
+            We make sure the quality is great.
+          </p>
+        </div>
+      </div>
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center brown-text"><i class="material-icons">location_city</i></h2>
+          <h3 class="center">Trusted company</h3>
+          <p class="light">
+            This company has received 98% satisfaction.
+          </p>
+        </div>
+      </div>
+
+
+
     </div>
-
-    <div class="col s12 m4">
-      <div class="icon-block">
-        <h2 class="center brown-text"><i class="material-icons">location_city</i></h2>
-      <h3 class="center">Trusted company</h3>
-      <p class="light">
-        This company has received 98% satisfaction.
-      </p>
-    </div>
-  </div>
-
-
-
-</div>

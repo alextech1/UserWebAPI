@@ -12,12 +12,12 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./add-cart.component.css']
 })
 export class AddCartComponent implements OnInit {
-  private userId: number;
+  private userId: string;
   private productId: number;
   private quantity: number;
   private bodyData: any;
   private addForm: FormGroup;
-  private products: Product[]=[];
+  private products: Product[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,14 +41,15 @@ export class AddCartComponent implements OnInit {
   onSubmit() {
     console.log(this.addForm);
     this.quantity = this.addForm.value.quantity;
-    this.productId = parseInt(this.addForm.value.product);
-    this.userId = parseInt(localStorage.getItem('username'));
-    this.bodyData = { 
-      cartId:1,
-      userId: 1, 
-      productId: this.productId, 
+    this.productId = parseInt(this.addForm.value.product, 10);
+    this.userId = localStorage.getItem('id');
+    this.bodyData = {
+      cartId: 1,
+      userId: this.userId,
+      productId: this.productId,
       quantity: this.quantity
     };
+    console.log(this.bodyData);
     this.cartService.addCart(this.bodyData).subscribe(resp => {
       if (resp) {
         const message = resp.message;

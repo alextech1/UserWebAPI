@@ -1,59 +1,9 @@
 div.sm-jumbotron {
-    padding: 2rem;
-    background-color: #38547b;
-    color: #ffffff;    
+  padding: 2rem;
+  background-color: #38547b;
+  color: #ffffff;    
 }
 
-button.btn-submit {
-    background-color: #38547b;
-    color: #ffffff;
-    width: 100%;
-}
-
-button.btn-submit:focus, button.btn-submit:hover {
-    background-color: #38547b;
-}
-
-input.ng-invalid.ng-dirty {
-    border-bottom-color: #e91e63 !important;
-    box-shadow: 0 1px 0 0 #e91e63 !important;
-}
-
-
-
-nav ul a,
-nav .brand-logo {
-  color: #444;
-}
-
-p {
-  line-height: 2rem;
-}
-
-.sidenav-trigger {
-  color: #26a69a;
-}
-
-.parallax-container {
-  min-height: 380px;
-  line-height: 0;
-  height: auto;
-  color: rgba(0, 0, 0, 0.9);
-}
-  .parallax-container .section {
-    width: 100%;
-  }
-
-
-.parallax-container .parallax{
-    position: static;
-}
-.parallax-container .parallax img{
-    position: static;
-    transform: none;
-    display: block;
-    max-width: 100%;
-}
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
@@ -71,6 +21,10 @@ p {
   }
 }
 
+.no-padding {
+  padding: 0;
+}
+
 .icon-block {
   padding: 0 0px;
 }
@@ -78,6 +32,93 @@ p {
   font-size: inherit;
 }
 
+.row .col.s12{
+  float: none !important;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.myCarousel {
+  display: inline-flex !important;
+  padding: 0px 0px 0px 0px;
+  border:0px !important;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  outline: none;
+  max-width: 1000px;
+  max-height: 500px;
+  position: relative;
+  margin: auto;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.box .row.header {
+  flex: 0 1 auto;
+  /* The above is shorthand for:
+  flex-grow: 0,
+  flex-shrink: 1,
+  flex-basis: auto
+  */
+}
+
+.box .row.content {
+  flex: 1 1 auto;
+}
+
+.box .row.footer {
+  flex: 0 1 40px;
+}
+
 footer.page-footer {
   margin: 0;
+}
+
+
+.navbar-text {
+  color: aliceblue;
+}
+
+
+.slideshow-container {
+  max-width: 1400px;
+  position: relative;
+  margin: auto;
+  text-align:center;
+}
+
+.slideshow-container img{
+  display: none;
+}
+
+.slideshow-container img.image-active {
+    display: block;
+    width: 100%;
+}
+
+/* The dots/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
 }

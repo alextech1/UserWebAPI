@@ -36,10 +36,10 @@ namespace UserWebAPI.Controllers
         [AllowAnonymous]
         [Route("api/getOrderStatus")]
         [HttpPost]
-        public async Task<IActionResult> GetOrderStatus([FromBody] int UserId)
+        public async Task<IActionResult> GetOrderStatus([FromBody] string UserId)
         {
-            string title = "";
-            string body = "";
+            //string title = "";
+            //string body = "";
             object data = "";
 
             List<OrderStatus> orderStatus = dataContext.OrderStatus.ToList();
@@ -61,21 +61,21 @@ namespace UserWebAPI.Controllers
                     }
 
 
-                    title = "GetOrderStatus";
-                    body = message;
+                    //title = "GetOrderStatus";
+                    //body = message;
 
-                    this.pushNotificationLogic.PushNotification(body, title, UserName);
+                    //this.pushNotificationLogic.PushNotification(body, title, UserName);
 
-                    return Ok(new
+                    return await Task.Run(() => Ok(new
                     {
                         message = message
-                    });
+                    }));
                 }
             }
-            title = "GetOrderStatus";
-            body = "There is no order status";
+            //title = "GetOrderStatus";
+            //body = "There is no order status";
 
-            this.pushNotificationLogic.PushNotification(body, title, UserName);
+            //this.pushNotificationLogic.PushNotification(body, title, UserName);
             return BadRequest(new { message = "There is no order status" });
 
         }
@@ -99,23 +99,23 @@ namespace UserWebAPI.Controllers
                 {
                     if (orderStatus[i].UserId == model.UserId)
                         dataContext.OrderStatus.Remove(orderStatus[i]);
-
-
-
                 }
                 OrderStatus order = new OrderStatus();
                 order.UserId = model.UserId;
                 order.MessageId = model.MessageId;
                 dataContext.OrderStatus.Add(order);
                 dataContext.SaveChanges();
-                //var pushSent = await PushNotificationLogic.SendPushNotification(tokens, title, body, data);
-                this.pushNotificationLogic.PushNotification(body, title, UserName);
+                // Use this for Android devices:
+                // this.pushNotificationLogic.PushNotification(body, title, UserName);
 
-                return Ok(new
+                // Alternative pushnotification
+                // var pushSent = await PushNotificationLogic.SendPushNotification(tokens, title, body, data);
+
+                return await Task.Run(() => Ok(new
                 {
                     message = "Success"
-                });
-            } catch (Exception ex)
+                }));
+            } catch
             {
                 return Ok(new
                 {

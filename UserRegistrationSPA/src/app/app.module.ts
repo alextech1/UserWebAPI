@@ -6,18 +6,17 @@ import { createCustomElement } from '@angular/elements';
 
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-//import { AppRoutingModule } from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LogInComponent } from './log-in/log-in.component';
 import { HomeComponent } from './home/home.component';
+import { CarouselComponent } from './carousel/carousel.component';
 import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { ProductComponent } from './product/product.component';
 import { OrderComponent } from './order/order.component';
 import { CartComponent } from './cart/cart.component';
@@ -31,9 +30,14 @@ import { AddCartComponent } from './add-cart/add-cart.component';
 import { EditCartComponent } from './edit-cart/edit-cart.component';
 import { ChartModule, LineSeriesService, CategoryService, } from '@syncfusion/ej2-angular-charts';
 import { FinanceChartComponent } from './finance-chart/finance-chart.component';
+import { NgbModule, NgbCarousel, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
+import { FooterComponent } from './footer/footer.component';
+import { SearchComponent } from './search/search.component';
+
 
 @NgModule({
-   declarations: [
+   declarations: [			
       AppComponent,
       SignUpComponent,
       LogInComponent,
@@ -51,19 +55,23 @@ import { FinanceChartComponent } from './finance-chart/finance-chart.component';
       AddCartComponent,
       EditCartComponent,
       FinanceChartComponent,
-      ],
+      CarouselComponent,
+      FooterComponent,
+      StoreComponent,
+      SearchComponent
+   ],
    imports: [
       HttpModule,
       BrowserModule,
       HttpClientModule,
-      //AppRoutingModule,
       FormsModule,
       ReactiveFormsModule,
-      //REQUIREDforngModeltags\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\nHttpClientModule',
+      CommonModule,
       BrowserAnimationsModule,
+      NgbCarouselModule,
+      NgbModule,
       ToastrModule.forRoot(),
       RouterModule.forRoot(appRoutes),
-      Ng2CarouselamosModule,
       DataTableModule,
       ChartModule
    ],
@@ -76,7 +84,7 @@ import { FinanceChartComponent } from './finance-chart/finance-chart.component';
    ]
 })
 
-export class AppModule { 
+export class AppModule {
    constructor() {
    }
    ngDoBootstrap() {}

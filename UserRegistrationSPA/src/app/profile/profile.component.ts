@@ -28,17 +28,16 @@ export class ProfileComponent implements OnInit {
     private message: string;
 
   ngOnInit() {
-    let userId = localStorage.getItem("id");
-    console.log("je");
+    const userId = localStorage.getItem('id');
+    console.log('profile id');
     console.log(userId);
-    var id = +userId;
-    this.orderStatusService.getOrderStatus(id).subscribe((data:any) => {  
-      console.log(data); 
+    // var id = +userId;
+    this.orderStatusService.getOrderStatus(userId).subscribe((data: any) => {
+      console.log(data);
       this.message = data.message;
-       
     }, error => {
-      this.message = "There is no order status";
-  }); 
+      this.message = 'There is no order status';
+  });
 
   }
 

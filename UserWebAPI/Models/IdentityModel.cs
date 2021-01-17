@@ -19,11 +19,17 @@ namespace UserWebAPI.Models
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<User>(u =>
+            /*builder.Entity<User>(u =>
             {
                 u.ToTable("User");
                 u.HasKey(x => x.Id);
-            });
+            });*/
+
+            builder
+                .Entity<User>()
+                .Property(x => x.Id)
+                .ValueGeneratedOnAdd();
+
             builder.Entity<Role>(u =>
             {
                 u.ToTable("Role");

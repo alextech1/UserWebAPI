@@ -15,22 +15,19 @@ export class ProductService {
     private products: Product[];
     private baseUrl = environment.apiUrl;
     public productModel: Product;
-    
+
     constructor(private http: HttpClient) {
         this.products = [];
     }
-
-    
 
     findAll(searchStr: string): Observable<ProductRes>{
         console.log('findall product');
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
-              //'Authorization': 'jwt-token'
+              // 'Authorization': 'jwt-token'
             })
           };
-        
         return this.http.post<ProductRes>(this.baseUrl + 'getProducts', {searchStr: ''}, httpOptions)
             .pipe();
     }
@@ -40,7 +37,7 @@ export class ProductService {
     }
 
     private getSelectedIndex(id: string) {
-        for (var i = 0; i < this.products.length; i++) {
+        for (let i = 0; i < this.products.length; i++) {
             if (this.products[i].id == parseInt(id)) {
                 return i;
             }

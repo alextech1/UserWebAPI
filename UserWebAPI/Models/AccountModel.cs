@@ -8,7 +8,7 @@ namespace UserWebAPI.Models
 {
     public class AccountModel //Dto
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

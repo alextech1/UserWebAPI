@@ -5,9 +5,9 @@ using UserWebAPI.Models;
 
 namespace UserWebAPI.Entities
 {
-    public class User : IdentityUser<int>
+    public class User : IdentityUser //<int>
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
@@ -15,5 +15,6 @@ namespace UserWebAPI.Entities
         public string Token { get; set; }
         [NotMapped]
         public byte[] PasswordSalt { get; set; }
+        //public List<Cart> MyCart { get; set; }
     }
 }

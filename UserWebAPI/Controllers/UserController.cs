@@ -38,10 +38,10 @@ namespace UserWebAPI.Controllers
             }
 
 
-            return Ok(new
+            return await Task.Run(() => Ok(new
             {
                 message = message
-            });
+            }));
             //return BadRequest(new { message = "There is no order status" });
         }
     }

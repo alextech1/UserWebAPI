@@ -19,42 +19,84 @@ namespace UserWebAPI.Controllers
         }
 
         [AllowAnonymous]
+        [Route("api/findUserCart")]
+        [HttpPost]
+        public async Task<IActionResult> FindUserCart([FromBody] AddCartModel model)
+        {
+            string message = "success";
+
+            if(model.userId == "")
+            {
+                message = "invalid value";
+
+                return await Task.Run(() => Ok(new
+                {
+                    message = message
+                }));
+            }
+
+            List<Dictionary<string, object>> dataList = new List<Dictionary<string, object>>();
+
+            try
+            {
+                dataList = GetCartForUserFunc(model.userId);
+
+                return await Task.Run(() => Ok(new
+                {
+                    message = message,
+                    cartList = dataList
+                }));
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+
+                return await Task.Run(() => Ok(new
+                {
+                    message = message,
+                    cartList = dataList
+                }));
+            }
+        }
+
+        [AllowAnonymous]
         [Route("api/addCart")]
         [HttpPost]
         public async Task<IActionResult> AddCart([FromBody] AddCartModel model)
         {
             string message = "success";
-            if (model.productId == 0 || model.userId == 0 || model.quantity == 0)
+            if (model.productId == 0 || model.userId == "" || model.quantity == "")
             {
                 message = "invalid value";
 
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message
-                });
+                }));
             }
 
             try
             {
                 Cart cart = new Cart();
-                cart.UserId = Convert.ToInt32(model.userId);
-                cart.ProductId = Convert.ToInt32(model.productId);
+                //cart.UserId = Convert.ToInt32(model.userId);
+                cart.UserId = model.userId;
+                cart.ProductId = model.productId;
                 cart.Quantity = Convert.ToInt32(model.quantity);
                 dataContext.Carts.Add(cart);
                 dataContext.SaveChanges();
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message
-                });
+                }));
             }
             catch(Exception ex)
             {
                 message = ex.Message;
 
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message
-                });
+                }));
             }
             //return BadRequest(new { message = "Cart bad request" });
 
@@ -67,24 +109,34 @@ namespace UserWebAPI.Controllers
         {
             string message = "success";
 
+            if (model.quantity == "")
+            {
+                message = "invalid value";
+
+                return await Task.Run(() => Ok(new
+                {
+                    message = message
+                }));
+            }
+
             try
             {
                 Cart cart = dataContext.Carts.Find(model.cartId);
-                cart.Quantity = model.quantity;
+                cart.Quantity = Convert.ToInt32(model.quantity);
                 dataContext.SaveChanges();
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message
-                });
+                }));
             }
             catch(Exception ex)
             {
                 message = ex.Message;
 
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message
-                });
+                }));
             }
 
             //return BadRequest(new { message = "Cart bad request" });
@@ -103,25 +155,63 @@ namespace UserWebAPI.Controllers
             {
                 dataList = GetCartsFunc();
 
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message,
                     cartList = dataList
-                });
+                }));
             }
             catch (Exception ex)
             {
                 message = ex.Message;
 
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message,
                     cartList = dataList
-                });
+                }));
             }
 
             //return BadRequest(new { message = "Cart bad request" });
 
+        }
+
+        private List<Dictionary<string, object>> GetCartForUserFunc(string userId)
+        {
+            List<Dictionary<string, object>> dataList = new List<Dictionary<string, object>>();
+            List<Cart> cartList = new List<Cart>();
+
+            cartList = dataContext.Carts.Where(y => y.UserId == userId).ToList();
+
+            foreach (var cartItem in cartList)
+            {
+                Dictionary<string, object> item = new Dictionary<string, object>();
+                item.Add("id", cartItem.Id);
+                Dictionary<string, object> pItem = new Dictionary<string, object>();
+
+                try
+                {
+                    Product product = dataContext.Products.Find(cartItem.ProductId);
+                    pItem.Add("productId", product.Id);
+                    pItem.Add("name", product.Name);
+                    pItem.Add("photo", product.Photo);
+                    pItem.Add("price", product.Price);
+                    item.Add("product", pItem);
+                }
+                catch
+                {
+                    pItem.Add("productId", 0);
+                    pItem.Add("name", "");
+                    pItem.Add("photo", "");
+                    pItem.Add("price", 0);
+                    item.Add("product", pItem);
+                }
+
+                item.Add("quantity", cartItem.Quantity);
+                dataList.Add(item);
+            }
+
+            return dataList;
         }
 
         private List<Dictionary<string, object>> GetCartsFunc()
@@ -146,7 +236,7 @@ namespace UserWebAPI.Controllers
                     pItem.Add("price", product.Price);
                     item.Add("product", pItem);
                 }
-                catch (Exception ex)
+                catch
                 {
                     pItem.Add("productId", 0);
                     pItem.Add("name", "");
@@ -176,21 +266,21 @@ namespace UserWebAPI.Controllers
                 dataContext.Carts.Remove(cart);
                 dataContext.SaveChanges();
                 dataList = GetCartsFunc();
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message,
                     cartList = dataList
-                });
+                }));
             }
             catch(Exception ex)
             {
                 message = ex.Message;
                 dataList = GetCartsFunc();
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message,
                     cartList = dataList
-                });
+                }));
             }
             
             //return BadRequest(new { message = "Cart bad request" });

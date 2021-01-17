@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.Linq;
-using System.Threading.Tasks;
 using UserWebAPI.Entities;
 using System.Text;
 using System.Net;
@@ -18,8 +16,8 @@ namespace UserWebAPI.Data
     public class PushNotificationLogic
     {
         private static Uri FireBasePushNotificationURL = new Uri("https://fcm.googleapis.com/fcm/send");
-        private static string ServerKey = "SERVERKEY";
-        private static string SenderId = "SENDERID";
+        private static string ServerKey = "AAAAOS67KR8:APA91bF2pamPJN7BxZyrMRx9RksmPHqNnAWy_rUJG2fSuDxW5WucWzqMRNqmuDJFSY9weLMp_6-Q_aZ1GaC7NWs8PCO48dfvNhCRMoml7CpOjrEhY5RWdxPvSAw7J4UO2T3hhKGqrXw_";
+        private static string SenderId = "245597153567";
         private DataContext dataContext;
 
         public PushNotificationLogic(DataContext context)
@@ -27,6 +25,7 @@ namespace UserWebAPI.Data
             dataContext = context;
         }
 
+        // Firebase onMessageReceived expects a certain json format.
         public void PushNotification(string message, string tagMsg, string userName)
         {
             try
@@ -47,22 +46,15 @@ namespace UserWebAPI.Data
                     tRequest.ContentType = "application/json";
 
                     var data = new
-
-                    {
-
-                        to = deviceId,
-
+                    {                        
                         notification = new
-
                         {
-
-                            body = message,
-
                             title = tagMsg,
+                            body = message                   
 
-                            icon = "myicon"
-
-                        }
+                            //icon = "myicon"
+                        },
+                        to = deviceId
                     };
 
                     var serializer = new JavaScriptSerializer();
@@ -93,7 +85,7 @@ namespace UserWebAPI.Data
                                 using (StreamReader tReader = new StreamReader(dataStreamResponse))
                                 {
 
-                                    String sResponseFromServer = tReader.ReadToEnd();
+                                    string sResponseFromServer = tReader.ReadToEnd();
 
                                     string str = sResponseFromServer;
 
@@ -101,9 +93,6 @@ namespace UserWebAPI.Data
                             }
                         }
                     }
-                } else
-                {
-                    string str1 = "Token has not been set";
                 }
                 
             }
@@ -129,9 +118,9 @@ namespace UserWebAPI.Data
                         notification = new Notification()
                         {
                             title = title,
-                            text = body,
-                            mutable_content = true,
-                            sound = "Tri-tone"
+                            body = body
+                            //mutable_content = true,
+                            //sound = "Tri-tone"
                         },
 
                         data = dict,

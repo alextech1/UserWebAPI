@@ -7,15 +7,15 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class RoleService {
-  readonly rootUrl = "http://localhost:5000/" //listen to API
+  readonly rootUrl = 'http://localhost:5000/'
   constructor(private http: HttpClient) { }
 
-  saveRole(user : User) : Observable<User> 
+  saveRole(user : User) : Observable<User>
   {
-    const body : User = {
-      Id:user.Id,
-      FirstName:user.FirstName,
-      LastName:user.LastName,
+    const body: User = {
+      Id: user.Id,
+      FirstName: user.FirstName,
+      LastName: user.LastName,
       UserName: user.UserName,
       Password: user.Password,
       Email: user.Email,
@@ -24,7 +24,7 @@ export class RoleService {
       OrderStatus: 0,
       Token: user.Token
     }
-    console.log("here");
+    console.log('saveRole');
     return this.http.post<User>(this.rootUrl + 'api/admin/saveRole', body);
   }
 

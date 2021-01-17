@@ -6,21 +6,21 @@ import {ToastrService} from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sign-up', //used in app.component.html
+  selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
-  user:User;
+  user: User;
   userRegistrationForm: FormGroup;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
-  constructor(private userService:UserService, private toastr: ToastrService, private fb: FormBuilder, private router: Router) { }
+  constructor(private userService: UserService, private toastr: ToastrService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.createRegisterForm();
   }
-  
+
   createRegisterForm() {
     this.userRegistrationForm = this.fb.group({
       FirstName: ['', Validators.required],
@@ -30,10 +30,10 @@ export class SignUpComponent implements OnInit {
       Email: ['', Validators.required],
       Address: ['', Validators.required]
   });
-} 
+}
 
   onSubmit() {
-    let request : User = new User();
+    let request: User = new User();
     request.FirstName = this.userRegistrationForm.get('FirstName').value;
     request.LastName = this.userRegistrationForm.get('LastName').value;
     request.UserName = this.userRegistrationForm.get('UserName').value;
@@ -43,13 +43,13 @@ export class SignUpComponent implements OnInit {
     request.Role = 1;
 
     if (this.userRegistrationForm.valid) {
-      //this.user = Object.assign({}, this.userRegistrationForm.value);
-      this.userService.registerUser(request).subscribe((data:any) => {      
-        this.toastr.success("User Registration Successful"); 
+      // this.user = Object.assign({}, this.userRegistrationForm.value);
+      this.userService.registerUser(request).subscribe((data: any) => {
+        this.toastr.success('User Registration Successful');
         this.router.navigateByUrl('log-in');
       }, error => {
         this.toastr.error(error);
-    }); 
+    });
     }
   }
 

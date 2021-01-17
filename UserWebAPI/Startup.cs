@@ -5,16 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 using UserWebAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using System.Net;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Newtonsoft.Json.Converters;
 using UserWebAPI.Entities;
 using UserWebAPI.Services;
+using Microsoft.Extensions.Hosting;
 
 namespace UserWebAPI
 {
@@ -32,15 +29,33 @@ namespace UserWebAPI
         {
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddTransient<YourDbContextSeedData>();
+
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                builder => builder.WithOrigins("http://localhost:4200")
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .Build());
+                options.AddPolicy("CorsPolicy", builder =>
+                {
+                    builder
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials()
+                    .WithOrigins("http://localhost:4200");
+                });
             });
+
+            services.AddHealthChecks();        
+
+            services.AddAutoMapper();
+
+            services.AddControllers().AddNewtonsoftJson();
+
+            services.AddIdentity<User, Role>(options =>
+                {
+                    options.User.RequireUniqueEmail = false;
+                })
+                .AddEntityFrameworkStores<DataContext>()
+                .AddDefaultTokenProviders();
 
             services.AddAuthentication(o =>
             {
@@ -50,42 +65,36 @@ namespace UserWebAPI
             })
             .AddJwtBearer(options =>
             {
+                options.SaveToken = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
                     ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("KeyForSignInSecret@1234")), //alternative: GetBytes(appSettings.Secret);
+                    ValidateAudience = true,
+                    ValidAudience = "http://0.0.0.0:5000",
+                    ValidateIssuer = true,
                     ValidIssuer = "http://0.0.0.0:5000",//localhost
-                    ValidAudience = "http://0.0.0.0:5000",//localhost
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("KeyForSignInSecret@1234")) //alternative: GetBytes(appSettings.Secret);
+                    ValidateLifetime = true                    
                 };
             });
 
-           
-            services.AddAutoMapper();
-
-            services.AddIdentity<User, Role>(options =>
-                {
-                    options.User.RequireUniqueEmail = false;
-                })
-                .AddEntityFrameworkStores<DataContext>()
-                .AddDefaultTokenProviders();
-
-       
             services.AddScoped<IUserService, UserService>();
 
-            services.AddMvc()
+            /*services.AddMvc()
                 .AddJsonOptions(options => { options.SerializerSettings.Converters.Add(new StringEnumConverter()); })
-                .AddControllersAsServices();
+                .AddControllersAsServices();*/
+
+            services.AddMvcCore().AddNewtonsoftJson();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, YourDbContextSeedData seeder)
+        //IHostingEnvironment env
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, YourDbContextSeedData seeder)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
+            /*else
             {
                 app.UseExceptionHandler(builder =>
                 {
@@ -101,11 +110,23 @@ namespace UserWebAPI
                         }
                     });
                 });
-            }
+            }*/
+
             seeder.SeedAdminUser();
             seeder.SeedProducts();
+
             app.UseCors("CorsPolicy");
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
+            //app.UseMvc();
         }
 
     }

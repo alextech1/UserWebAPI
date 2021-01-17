@@ -8,15 +8,15 @@ import { User } from './user.model';
   providedIn: 'root'
 })
 export class UserService {
-  readonly rootUrl = "http://localhost:5000/" //connect to API
+  readonly rootUrl = 'http://localhost:5000/';
   constructor(private http: HttpClient) { }
 
-  registerUser(user : User) : Observable<User> 
+  registerUser(user: User): Observable<User>
   {
-    const body : User = {
-      Id:user.Id,
-      FirstName:user.FirstName,
-      LastName:user.LastName,
+    const body: User = {
+      // Id: user.Id,
+      FirstName: user.FirstName,
+      LastName: user.LastName,
       UserName: user.UserName,
       Password: user.Password,
       Email: user.Email,
@@ -28,10 +28,9 @@ export class UserService {
     return this.http.post<User>(this.rootUrl + 'api/User/Register', body);
   }
 
-  
-  getAllUsers() 
+  getAllUsers()
   {
-    return this.http.post<User>(this.rootUrl + 'api/admin/getusers', "");
+    return this.http.post<User>(this.rootUrl + 'api/admin/getusers', '');
   }
 
   getUser(id): Observable<User> {

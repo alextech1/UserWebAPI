@@ -15,6 +15,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddCartComponent } from './add-cart/add-cart.component';
 import { EditCartComponent } from './edit-cart/edit-cart.component';
 import { FinanceChartComponent } from './finance-chart/finance-chart.component';
+import { CarouselComponent } from './carousel/carousel.component';
+import { SearchComponent } from './search/search.component';
 
 export const appRoutes: Routes = [
   {
@@ -22,6 +24,7 @@ export const appRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: 'home', component: HomeComponent},
+      { path: 'carousel', component: CarouselComponent},
       { path: 'sign-up', component: SignUpComponent},
       { path: 'log-in', component: LogInComponent},
       { path: 'order', component: OrderComponent},
@@ -32,6 +35,7 @@ export const appRoutes: Routes = [
       { path: 'logout', component: LogoutComponent},
       { path: 'profile', component: ProfileComponent},
       { path: 'store', component: StoreComponent},
+      { path: 'search', component: SearchComponent},
       { path: 'admin/login', component: AdminLoginComponent},
       { path: 'add-cart', component: AddCartComponent },
       { path: 'edit-cart', component: EditCartComponent },

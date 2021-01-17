@@ -43,26 +43,28 @@ namespace UserWebAPI.Controllers
                     Dictionary<string, object> item = new Dictionary<string, object>();
                     item.Add("Id", productItem.Id);
                     item.Add("Name", productItem.Name);
+                    item.Add("Description", productItem.Description);
                     item.Add("Price", productItem.Price);
                     item.Add("Photo", productItem.Photo);
+                    item.Add("Quantity", productItem.Quantity);
                     dataList.Add(item);
                 }
 
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message,
                     productList = dataList
-                });
+                }));
             }
             catch(Exception ex)
             {
                 message = ex.Message;
                 
-                return Ok(new
+                return await Task.Run(() => Ok(new
                 {
                     message = message,
                     productList = dataList
-                });
+                }));
             }
 
             //return BadRequest(new { message = "There is no order status" });

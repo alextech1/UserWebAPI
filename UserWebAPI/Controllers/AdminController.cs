@@ -60,13 +60,13 @@ namespace UserWebAPI.Controllers
 
                 if (result.Succeeded)
                 {
-                    return Ok(new
+                    return await Task.Run(() => Ok(new
                     {
                         token = GenerateJwtToken(model)
-                    });
+                    }));
                 }
             }
-            catch (Exception e) {
+            catch {
 
             }
             return Unauthorized();
@@ -83,10 +83,10 @@ namespace UserWebAPI.Controllers
                 if (users[i].Role == 0)
                     users.RemoveAt(i);
             }
-            return Ok(new
+            return await Task.Run(() => Ok(new
             {
                 users = users
-            }); ;
+            }));
         }
 
         [AllowAnonymous]
@@ -99,10 +99,10 @@ namespace UserWebAPI.Controllers
             {
                 if (users[i].UserName == Name)
                 {
-                    return Ok(new
+                    return await Task.Run(() => Ok(new
                     {
                         user = users[i]
-                    });
+                    }));
                 }
             }
             return BadRequest(new { message = "No Such User" });
@@ -144,8 +144,7 @@ namespace UserWebAPI.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim (ClaimTypes.NameIdentifier, model.Id.ToString()),
-                new Claim (ClaimTypes.Name, model.UserName)
+                new Claim(JwtRegisteredClaimNames.NameId, model.UserName)
             };
 
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("KeyForSignInSecret@1234"));

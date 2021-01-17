@@ -14,32 +14,42 @@ export class CartService {
     private carts: Cart[];
     private baseUrl = environment.apiUrl;
     public cartModel: Cart;
-    
+
     constructor(private http: HttpClient) {
         this.carts = [];
     }
 
-    
     findAll(searchStr: string): Observable<CartRes>{
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
-              //'Authorization': 'jwt-token'
+              // 'Authorization': 'jwt-token'
             })
           };
         return this.http.post<CartRes>(this.baseUrl + 'getCarts', {searchStr: ''}, httpOptions)
             .pipe();
     }
 
+    findCartByUserId(body): Observable<CartRes>{
+      console.log('findCartByUserId');
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      };
+
+      return this.http.post<CartRes>(this.baseUrl + 'findUserCart', body, httpOptions).pipe();
+    }
+
     addCart(body): Observable<MsgRes> {
-        console.log("add cart service");
+        console.log('addCart');
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
-              //'Authorization': 'jwt-token'
+              // 'Authorization': 'jwt-token'
             })
           };
-          console.log("body",body);
+          console.log('body', body);
         return this.http.post<MsgRes>(this.baseUrl + 'addCart', body, httpOptions).pipe();
     }
 
@@ -47,7 +57,7 @@ export class CartService {
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
-              //'Authorization': 'jwt-token'
+              // 'Authorization': 'jwt-token'
             })
           };
         return this.http.post<MsgRes>(this.baseUrl + 'editCart', body, httpOptions).pipe();
@@ -57,7 +67,7 @@ export class CartService {
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',
-              //'Authorization': 'jwt-token'
+              // 'Authorization': 'jwt-token'
             })
           };
         return this.http.post<CartRes>(this.baseUrl + 'deleteCart', body, httpOptions).pipe();

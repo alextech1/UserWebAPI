@@ -7,7 +7,7 @@ namespace UserWebAPI.Models
 {
     public class Status
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int MessageId { get; set; }
     }
 }

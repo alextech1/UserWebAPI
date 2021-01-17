@@ -14,9 +14,9 @@ export class CheckoutComponent implements OnInit {
   }
 
   removeAll(): void{
-    let userId = localStorage.getItem("username");
+    let userId = localStorage.getItem('username');
     localStorage.removeItem(userId.toString());
-    //localStorage.setItem(userId.toString(), JSON.stringify(""));
+    // localStorage.setItem(userId.toString(), JSON.stringify(""));
   }
 
 }
