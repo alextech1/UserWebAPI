@@ -24,8 +24,6 @@ import kotlinx.android.synthetic.main.activity_profile.*
 
 class MyFirebaseInstanceIDService:FirebaseMessagingService() {
 
-    private var profile: Profile? = null
-
     override fun onNewToken(s: String) {
         super.onNewToken(s)
         val user = FirebaseAuth.getInstance().currentUser
@@ -37,20 +35,16 @@ class MyFirebaseInstanceIDService:FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(p0: RemoteMessage) {
+        Log.d("onMessageReceived____", p0.notification?.body)
         if (p0.notification != null) {
             showNotification(p0.notification?.title, p0.notification?.body)
-
         }
     }
 
-    fun sendStatusUpdate(body: String) {
-
-    }
-
     private fun showNotification(title: String?, body: String?) {
+        Log.d("showNotification____", body)
         val NOTIFICATION_ID = 234
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val CHANNEL_ID = "my_channel_01"
@@ -93,11 +87,9 @@ class MyFirebaseInstanceIDService:FirebaseMessagingService() {
 
     }
 
-    //fun Profile.onStatusUpdateListener(body: String) {
-    //    on_status_change.text = body
-    //}
 
     private fun sendNotification(messageBody: String) {
+        Log.d("sendNotification____", messageBody)
         val intent = Intent(this, HomeActivity::class.java).putExtra("msg", messageBody)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(

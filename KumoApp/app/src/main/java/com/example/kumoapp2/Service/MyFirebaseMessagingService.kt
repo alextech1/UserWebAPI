@@ -8,6 +8,7 @@ import android.media.RingtoneManager
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.kumoapp2.MainActivity
+import com.example.kumoapp2.Profile
 import com.example.kumoapp2.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -19,16 +20,24 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
+        Log.d("MessagingServiceOnMR", "remoteMessage")
         super.onMessageReceived(remoteMessage)
         Log.d(TAG, "Home: ${remoteMessage.from}")
 
         if (remoteMessage.notification != null) {
             Log.d(TAG, "Test: ${remoteMessage.notification?.body}")
+            sendStatusUpdate(remoteMessage.notification?.body.toString())
             sendNotification(remoteMessage)
         }
     }
 
+    fun sendStatusUpdate(body: String) {
+        val instance = Profile.Factory
+        instance.onStatusUpdateReceived(body)
+    }
+
     private fun sendNotification(remoteMessage: RemoteMessage) {
+        Log.d("sendNotification____", "remote")
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
 
