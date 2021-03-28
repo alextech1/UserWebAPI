@@ -16,8 +16,8 @@ namespace UserWebAPI.Data
     public class PushNotificationLogic
     {
         private static Uri FireBasePushNotificationURL = new Uri("https://fcm.googleapis.com/fcm/send");
-        private static string ServerKey = "AAAAOS67KR8:APA91bF2pamPJN7BxZyrMRx9RksmPHqNnAWy_rUJG2fSuDxW5WucWzqMRNqmuDJFSY9weLMp_6-Q_aZ1GaC7NWs8PCO48dfvNhCRMoml7CpOjrEhY5RWdxPvSAw7J4UO2T3hhKGqrXw_";
-        private static string SenderId = "245597153567";
+        private static string ServerKey = "ServerKey";
+        private static string SenderId = "SenderId";
         private DataContext dataContext;
 
         public PushNotificationLogic(DataContext context)
@@ -96,6 +96,8 @@ namespace UserWebAPI.Data
                 }
                 
             }
+
+
             catch (Exception ex)
             {
                 string str = ex.Message;

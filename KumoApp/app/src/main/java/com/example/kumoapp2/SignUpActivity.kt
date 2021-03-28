@@ -54,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
             first_name_et.requestFocus()
             return
         }
-        if (last_name_et.text.toString().isNullOrEmpty()) {
+        /*if (last_name_et.text.toString().isNullOrEmpty()) {
             last_name_et.error = "Please enter last name"
             last_name_et.requestFocus()
         }
@@ -64,7 +64,7 @@ class SignUpActivity : AppCompatActivity() {
         }
         if (address_et.toString().isNullOrEmpty()) {
             address_et.error = "Please enter email"
-        }
+        }*/
 
         if (email_edittext_register.text.toString().isNullOrEmpty()) {
             email_edittext_register.error = "Please enter email"
@@ -92,28 +92,34 @@ class SignUpActivity : AppCompatActivity() {
             email_edittext_register.text.toString(), address_et.text.toString(), role
         )
 
-        registerNewUser(newUser)
+        //registerNewUser(newUser)
 
         //For firebase signup: email and password ONLY
-        /*auth.createUserWithEmailAndPassword(email_edittext_register.text.toString(), password_edittext_register.text.toString())
+        auth.createUserWithEmailAndPassword(
+            email_edittext_register.text.toString(),
+            password_edittext_register.text.toString()
+        )
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
 
                     val user = FirebaseAuth.getInstance().currentUser
-                    val profileUpdates = UserProfileChangeRequest.Builder().setDisplayName(strUserName).build()
+                    val profileUpdates =
+                        UserProfileChangeRequest.Builder().setDisplayName(first_name_et.text.toString()).build()
                     user!!.updateProfile(profileUpdates)
 
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                }*/
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
-    }
+            }
 
-    //Kotlin coroutines sign up
-    private fun registerNewUser(user: User)
+        //Kotlin coroutines sign up
+        /*private fun registerNewUser(user: User)
     {
         viewModel.registerUser(user).observe(this@SignUpActivity, Observer {
             it?.let {
@@ -133,12 +139,12 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
         })
-    }
+    }*/
 
-    //Regular retrofit signup
-    /*private fun registerNewUser(user: User)
+        //Regular retrofit signup
+        /*private fun registerNewUser(user: User)
     {
-        val call = myApi.registerUser(user!!)
+        val call = myApi.registerUser(user)
         call.enqueue(object : Callback<User> {
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 Log.e("SignUp", "signUp onResponse: " + response.body()!!.toString())
@@ -149,6 +155,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         })
     }*/
-
+    }
 
 }

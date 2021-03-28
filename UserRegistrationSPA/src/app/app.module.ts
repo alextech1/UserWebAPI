@@ -34,11 +34,13 @@ import { NgbModule, NgbCarousel, NgbCarouselModule } from '@ng-bootstrap/ng-boot
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 
 @NgModule({
    declarations: [			
       AppComponent,
+      FilterPipe,
       SignUpComponent,
       LogInComponent,
       HomeComponent,

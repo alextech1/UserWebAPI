@@ -9,6 +9,16 @@
             android:icon="@drawable/ic_image_store"
             android:title="@string/menu_home" />
 
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/menu_profile" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/menu_settings" />
+
     </group>
 
     <item android:title="Communicate">

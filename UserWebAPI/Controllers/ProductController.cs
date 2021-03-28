@@ -11,11 +11,11 @@ namespace UserWebAPI.Controllers
 {
     public class ProductController : ControllerBase
     {
-        private DataContext dataContext;
+        private DataContext _dataContext;
 
         public ProductController(DataContext context)
         {
-            this.dataContext = context;
+            _dataContext = context;
         }
 
         [AllowAnonymous]
@@ -31,10 +31,10 @@ namespace UserWebAPI.Controllers
             {
                 if (string.IsNullOrEmpty(model.searchStr))
                 {
-                    productList = dataContext.Products.ToList();
+                    productList = _dataContext.Products.ToList();
                 } else
                 {
-                    productList = dataContext.Products.Where(t => t.Name.Contains(model.searchStr)).ToList();
+                    productList = _dataContext.Products.Where(t => t.Name.Contains(model.searchStr)).ToList();
                 }
                 
 

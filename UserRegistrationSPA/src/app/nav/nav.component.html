@@ -22,8 +22,8 @@
         <option value="1">Category 01</option>
         <option value="2">Category 02</option>
       </select>
-      <input class="input" placeholder="Search here">
-      <button class="search-btn" [routerLink]="['/search']">Search</button>
+      <input class="input" placeholder="Search here" [(ngModel)]="searchInput" name="searchInput">
+      <button class="search-btn" (click)="onSubmit(searchInput)">Search</button>
     </form>
   </div>
 </div>
@@ -45,7 +45,7 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link waves-light" [routerLink]="['/cart']" mdbWavesEffect>Cart</a>
       </li>
-      <li class="nav-item" routerLinkActive="active" style="float:right" *ngIf="role == '0'">
+      <li class="nav-item" routerLinkActive="active" style="float:right" *ngIf="role == '2'">
         <a class="nav-link waves-light" [routerLink]="['/store']" mdbWavesEffect>Store</a>
       </li>
       <li class="nav-item" routerLinkActive="active" style="float:right" *ngIf="role == '1'">

@@ -33,7 +33,9 @@ class ShowProducts : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("__ShowProducts__", "onCreate called")
         setContentView(R.layout.show_products)
+        Log.d("__ShowProducts__", "setContentView loaded")
 
         myApi = RetrofitClient.getInstance().create(IMyAPI::class.java)
     }
@@ -72,6 +74,20 @@ class ShowProducts : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent(this@ShowProducts, LoginActivity::class.java))
                 finish()
             }
+
+            R.id.nav_profile -> {
+                Log.d("Testing navProfile ", "profile")
+
+                startActivity(Intent(this@ShowProducts, Profile::class.java))
+            }
+
+            R.id.nav_settings -> {
+                Log.d("Testing navUpdateInfo ", "updateInfo")
+
+                startActivity(Intent(this@ShowProducts, UpdateInfoActivity::class.java))
+            }
+
+
         }
 
         return true

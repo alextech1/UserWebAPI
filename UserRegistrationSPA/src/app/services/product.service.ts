@@ -20,7 +20,7 @@ export class ProductService {
         this.products = [];
     }
 
-    findAll(searchStr: string): Observable<ProductRes>{
+    findAll(inputStr: string): Observable<ProductRes>{
         console.log('findall product');
         const httpOptions = {
             headers: new HttpHeaders({
@@ -28,7 +28,7 @@ export class ProductService {
               // 'Authorization': 'jwt-token'
             })
           };
-        return this.http.post<ProductRes>(this.baseUrl + 'getProducts', {searchStr: ''}, httpOptions)
+        return this.http.post<ProductRes>(this.baseUrl + 'getProducts', {searchStr: inputStr}, httpOptions)
             .pipe();
     }
 

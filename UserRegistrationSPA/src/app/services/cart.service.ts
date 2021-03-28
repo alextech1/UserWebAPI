@@ -20,6 +20,7 @@ export class CartService {
     }
 
     findAll(searchStr: string): Observable<CartRes>{
+        console.log('findAll cart')
         const httpOptions = {
             headers: new HttpHeaders({
               'Content-Type':  'application/json',

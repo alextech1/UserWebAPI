@@ -11,11 +11,11 @@ namespace UserWebAPI.Controllers
 {
     public class UserController : ControllerBase
     {
-        private DataContext dataContext;
+        private DataContext _dataContext;
 
         public UserController(DataContext context)
         {
-            this.dataContext = context;
+            _dataContext = context;
         }
 
 
@@ -26,7 +26,7 @@ namespace UserWebAPI.Controllers
         public async Task<IActionResult> SetToken([FromBody] TokenModel model)
         {
             string message = "Token has been set";
-            User userItem = dataContext.Users.Where(x => x.Email.CompareTo(model.UserEmail) == 0).FirstOrDefault();
+            User userItem = _dataContext.Users.Where(x => x.Email.CompareTo(model.UserEmail) == 0).FirstOrDefault();
 
             if (userItem == null)
             {
@@ -34,7 +34,7 @@ namespace UserWebAPI.Controllers
             } else
             {
                 userItem.Token = model.Token;
-                dataContext.SaveChanges();
+                _dataContext.SaveChanges();
             }
 
 

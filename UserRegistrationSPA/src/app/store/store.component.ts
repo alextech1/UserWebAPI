@@ -37,7 +37,8 @@ export class StoreComponent implements OnInit {
             user.UserName = data.users[i].userName;
             user.FirstName = data.users[i].firstName;
             user.LastName = data.users[i].lastName;
-            user.Email = data.users[i].address;
+            user.Email = data.users[i].email;
+            user.Address = data.users[i].address;
             user.Role = data.users[i].role;
             if (user.Role === 1)
             {
@@ -55,7 +56,7 @@ export class StoreComponent implements OnInit {
   onMessageChanged(messageId)
   {
     this.message = messageId;
-    console.log(this.message);
+    console.log("messageId " + this.message);
   }
   onSend(userId)
   {

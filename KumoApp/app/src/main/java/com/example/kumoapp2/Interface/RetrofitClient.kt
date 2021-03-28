@@ -10,7 +10,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitClient {
     private var instance: Retrofit? = null
-    private const val BASE_URL = "http://192.168.198.1:5000/";
+    private const val BASE_URL = "http://192.168.198.1:5000/"
 
     fun getInstance(): Retrofit {
         if (instance == null)
@@ -21,6 +21,16 @@ object RetrofitClient {
                 .build()
         return instance!!
     }
+
+    /*fun getClient(url:String): Retrofit {
+        if (instance == null)
+            instance = Retrofit.Builder().baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build()
+        return instance!!
+    }*/
 
     val webservice by lazy {
         Retrofit.Builder()

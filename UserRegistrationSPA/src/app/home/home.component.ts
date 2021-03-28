@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, VERSION, ViewChild, ViewChildren } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +7,19 @@ import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/n
   styleUrls: ['./home.component.css'],
 
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  name = "Angular " + VERSION.major;
+  slidesIndex = 0;
+  @ViewChildren("slides") slides: QueryList<ElementRef>;
+  @ViewChildren("dot") dots: QueryList<ElementRef>;
+  slider$;
   title: string;
   description: string;
   role: Number;
   public selectedindex: number = 0;
-  public images = ['../../assets/images/healthimage1.png', '../../assets/images/healthimage2.jpg', '../../assets/images/healthimage3.jpg'];
+  public images = ['../../assets/images/healthimage1.png', 
+  '../../assets/images/healthimage2.jpg', 
+  '../../assets/images/healthimage3.jpg'];
   
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,9 +27,13 @@ export class HomeComponent implements OnInit {
     this.role = 1;
   }
 
-  ngOnInit() {
-    //this.showSlides();
+  ngAfterViewInit() {
+    this.showSlides();
   }
+
+  /*ngOnInit() {
+    this.showSlides();
+  }*/
 
   selectImage(index: number) {
     console.log("Index: " + index);
@@ -32,8 +42,38 @@ export class HomeComponent implements OnInit {
   }
 
   showSlides() {
+    this.slides.forEach(
+      (slidesDiv: ElementRef) =>
+      (slidesDiv.nativeElement.style.display = "none")
+    );
+    this.slidesIndex += 1;
+
+    if (this.slidesIndex > this.slides.length) {
+      this.slidesIndex = 1;
+    }
+    this.dots.forEach(
+      dotsDiv =>
+      (dotsDiv.nativeElement.className = 
+        dotsDiv.nativeElement.className.replace(
+          " active",
+          ""
+        ))
+    );
+    this.slides.toArray()[this.slidesIndex - 1].nativeElement.style.display = 
+      "block";
+    this.dots.toArray()[this.slidesIndex - 1].nativeElement.className +=
+      " active";
+    setTimeout(() => {
+      this.showSlides();
+    }, 6000);
+
+
+
+  }
+
+  /*showSlides() {
     let i;
-    let slides = document.getElementsByClassName("mySlides");
+    //let slides = document.getElementsByClassName("mySlides");
     let dots = document.getElementsByClassName("dot");
     for (i = 0; i < slides.length; i++) {
       (<HTMLElement>slides[i]).style.display = "none";
@@ -46,7 +86,7 @@ export class HomeComponent implements OnInit {
     (<HTMLElement>slides[this.selectedindex - 1]).style.display = "block";
     dots[this.selectedindex - 1].className += " active";
     setTimeout(() => this.showSlides, 2000);
-  }
+  }*/
 
 
   

@@ -17,18 +17,19 @@ using UserWebAPI.Models;
 using UserWebAPI.Data;
 using System.Configuration;
 using System.Net.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace UserWebAPI.Controllers
 {
     public class OrderStatusController : ControllerBase
     {
-        private DataContext dataContext;
-        private PushNotificationLogic pushNotificationLogic;
+        private DataContext _dataContext;
+        private PushNotificationLogic _pushNotificationLogic;
 
         public OrderStatusController(DataContext context)
         {
-            this.dataContext = context;
-            this.pushNotificationLogic = new PushNotificationLogic(context);
+            _dataContext = context;
+            _pushNotificationLogic = new PushNotificationLogic(context);
         }
 
 
@@ -42,8 +43,9 @@ namespace UserWebAPI.Controllers
             //string body = "";
             object data = "";
 
-            List<OrderStatus> orderStatus = dataContext.OrderStatus.ToList();
-            User userItem = dataContext.Users.Find(UserId);
+            List<OrderStatus> orderStatus = _dataContext.OrderStatus.ToList();
+            User userItem = _dataContext.Users.Find(UserId);
+            //Task<User> userItem = _dataContext.Users.Where(x => x.Id == UserId).FirstOrDefaultAsync();
             string UserName = userItem.UserName;
 
             for (int i = 0; i < orderStatus.Count(); i++)
@@ -87,29 +89,40 @@ namespace UserWebAPI.Controllers
         {
             try
             {
-                string title = "Add Order Status";
-                string body = "Success";
+                string title = "Order Status";
+                string body = "Failed to retrieve status";
                 string UserName = "";
 
-                List<OrderStatus> orderStatus = dataContext.OrderStatus.ToList();
-                User user = dataContext.Users.Find(model.UserId);
+                List<OrderStatus> orderStatus = _dataContext.OrderStatus.ToList();
+                //Task<User> user = _dataContext.Users.FirstOrDefaultAsync(x => x.Id == model.UserId); //Find(model.UserId);
+                User user = _dataContext.Users.Find(model.UserId);
                 UserName = user.UserName;
 
                 for (int i = 0; i < orderStatus.Count(); i++)
                 {
                     if (orderStatus[i].UserId == model.UserId)
-                        dataContext.OrderStatus.Remove(orderStatus[i]);
+                        _dataContext.OrderStatus.Remove(orderStatus[i]);
                 }
-                OrderStatus order = new OrderStatus();
+
+                if (model.MessageId == 1)
+                {
+                    body = "The order is being prepared";
+                }
+                else if (model.MessageId == 2)
+                {
+                    body = "The order is out for delivery";
+                }
+
+                OrderStatus order = new OrderStatus();                
                 order.UserId = model.UserId;
                 order.MessageId = model.MessageId;
-                dataContext.OrderStatus.Add(order);
-                dataContext.SaveChanges();
+                _dataContext.OrderStatus.Add(order);
+                _dataContext.SaveChanges();
                 // Use this for Android devices:
-                // this.pushNotificationLogic.PushNotification(body, title, UserName);
+                _pushNotificationLogic.PushNotification(body, title, UserName);
 
                 // Alternative pushnotification
-                // var pushSent = await PushNotificationLogic.SendPushNotification(tokens, title, body, data);
+                //var pushSent = await PushNotificationLogic.SendPushNotification(tokens, title, body, data);
 
                 return await Task.Run(() => Ok(new
                 {

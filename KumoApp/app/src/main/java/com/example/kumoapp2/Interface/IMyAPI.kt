@@ -9,9 +9,15 @@ import io.reactivex.Observable
 import retrofit2.http.Headers
 
 interface IMyAPI {
+    //kotlin coroutines
+    //@POST("api/User/Register")
+    //suspend fun registerUser(@Body user: User): User
+
+    @Headers("Content-Type:application/json",
+        "Authorization:key=API_KEY")
 
     @POST("api/User/Register")
-    suspend fun registerUser(@Body user: User): User
+    fun registerUser(@Body user: User):Call<User>
 
     @POST("api/auth/Login")
     fun loginUser():Call<LoginRes>
