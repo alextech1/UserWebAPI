@@ -62,7 +62,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_profile, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_search, R.id.nav_tools, R.id.nav_share, R.id.nav_send
             ), drawerLayout
         )
 
@@ -116,6 +116,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Log.d("Testing navProfile ", "profile")
 
                 startActivity(Intent(this@HomeActivity, Profile::class.java))
+            }
+
+            R.id.nav_search -> {
+                Log.d("Testing navSearch ", "search")
+
+                startActivity(Intent(this@HomeActivity, SearchList::class.java))
             }
 
             R.id.nav_settings -> {

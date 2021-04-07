@@ -46,7 +46,7 @@ class Profile : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_profile, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_search, R.id.nav_tools, R.id.nav_share, R.id.nav_send
             ), drawerLayout
         )
 
@@ -65,7 +65,7 @@ class Profile : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
 
-    fun updateStatus(body: String) {
+    private fun updateStatus(body: String) {
         on_status_change.text = statusTemp
     }
 
@@ -90,6 +90,12 @@ class Profile : AppCompatActivity(), NavigationView.OnNavigationItemSelectedList
                 Log.d("Testing navProfile ", "profile")
 
                 startActivity(Intent(this@Profile, Profile::class.java))
+            }
+
+            R.id.nav_search -> {
+                Log.d("Testing navSearch ", "search")
+
+                startActivity(Intent(this@Profile, SearchList::class.java))
             }
 
             R.id.nav_settings -> {

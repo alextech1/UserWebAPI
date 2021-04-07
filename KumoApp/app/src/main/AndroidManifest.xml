@@ -15,7 +15,9 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="GEO_APIKEY"/>
+            android:value="API_KEY"/>
+
+        
 
         <activity android:name=".MainActivity"></activity>
 
@@ -25,7 +27,8 @@
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SplashScreen" />
-        <activity android:name=".ShowProducts"></activity>
+        <activity android:name=".ShowProducts" />
+        <activity android:name=".SearchList" />
         <activity android:name=".Profile" />
         <activity android:name=".LoginActivity">
             <intent-filter>

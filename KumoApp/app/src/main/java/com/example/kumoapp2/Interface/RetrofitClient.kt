@@ -10,7 +10,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 
 object RetrofitClient {
     private var instance: Retrofit? = null
-    private const val BASE_URL = "http://192.168.198.1:5000/"
+    private const val BASE_URL = "http://10.0.2.2:5000/"
 
     fun getInstance(): Retrofit {
         if (instance == null)

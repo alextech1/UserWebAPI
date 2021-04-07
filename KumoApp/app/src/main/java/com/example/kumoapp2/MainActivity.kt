@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val newToken = instanceIdResult.token
             Log.e("newToken", newToken)
             // Send request to set token
-            run("http://10.0.2.2:5000/api/setToken/", newToken.toString(), email!!) //192.168.198.1:5000
+            run("http://10.0.2.2:5000/api/setToken/", newToken.toString(), email!!)
         }
 
 
@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_profile, R.id.nav_settings,
+                R.id.nav_search,
                 R.id.nav_slideshow, R.id.nav_tools, R.id.nav_share, R.id.nav_send
             ), drawerLayout
         )
@@ -167,6 +168,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Log.d("Testing navProfile ", "profile")
 
                 startActivity(Intent(this@MainActivity, Profile::class.java))
+            }
+
+            R.id.nav_search -> {
+                Log.d("Testing navSearch ", "search")
+
+                startActivity(Intent(this@MainActivity, SearchList::class.java))
             }
 
             R.id.nav_settings -> {

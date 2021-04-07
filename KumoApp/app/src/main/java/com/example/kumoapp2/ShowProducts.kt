@@ -4,32 +4,32 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import android.widget.Button
-import androidx.appcompat.widget.AppCompatButton
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import com.example.kumoapp2.Interface.IMyAPI
 import com.example.kumoapp2.Interface.RetrofitClient
-import com.example.kumoapp2.Model.Cart
 import com.example.kumoapp2.Model.CartRes
-import com.example.kumoapp2.Model.Product
 import com.example.kumoapp2.Model.ProductRes
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.show_products.*
+import okhttp3.MediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.IOException
 
 class ShowProducts : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener
 {
     private val TAG = "ShowProducts"
     lateinit var myApi: IMyAPI
+    private var searchStr: String = ""
+    private val client = OkHttpClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +38,52 @@ class ShowProducts : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         Log.d("__ShowProducts__", "setContentView loaded")
 
         myApi = RetrofitClient.getInstance().create(IMyAPI::class.java)
+
+        find_products.setOnClickListener {
+            findProducts(searchStr)
+        }
+    }
+
+    /*private fun findProducts(inputStr: String) {
+        val contentType = MediaType.parse("application/json; charset=utf-8")
+        val body = RequestBody.create(
+            contentType,
+            "{\"searchStr\":\"$inputStr\"}"
+        )
+        val request = Request.Builder()
+            .url("http://10.0.2.2:5000/api/getProducts")
+            .post(body)
+            .build()
+
+        client.newCall(request).enqueue(object : okhttp3.Callback {
+            override fun onFailure(call: okhttp3.Call, e: IOException) {
+                Log.d("onFailure", e.message)
+            }
+
+            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+                Log.d("onResponse getProducts", response.message())
+            }
+        })
+    }*/
+
+    private fun findProducts(inputStr: String) {
+        val paramObject = JSONObject()
+        paramObject.put("searchStr", inputStr)
+        val instance = SearchList.Factory
+
+        val call = myApi.findProducts(paramObject.toString())
+        call.enqueue(object : Callback<ProductRes> {
+            override fun onResponse(call: Call<ProductRes>, response: Response<ProductRes>) {
+                Log.e(TAG, "message onResponse: " + response.body()!!.message.toString())
+                Log.e(TAG, "findProducts onResponse: " + response.body()!!.productList)
+                instance.onProductsFound(response.body()!!.productList)
+                startActivity(Intent(this@ShowProducts, SearchList::class.java))
+            }
+
+            override fun onFailure(call: Call<ProductRes>, t: Throwable) {
+                Log.e(TAG, "findProducts onFailure: " + t.localizedMessage)
+            }
+        })
     }
 
     fun getCarts(view: View) {
@@ -75,10 +121,22 @@ class ShowProducts : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 finish()
             }
 
+            R.id.nav_home -> {
+                Log.d("Testing home store ", "kumo store")
+
+                startActivity(Intent(this@ShowProducts, MainActivity::class.java))
+            }
+
             R.id.nav_profile -> {
                 Log.d("Testing navProfile ", "profile")
 
                 startActivity(Intent(this@ShowProducts, Profile::class.java))
+            }
+
+            R.id.nav_search -> {
+                Log.d("Testing navSearch ", "search")
+
+                startActivity(Intent(this@ShowProducts, SearchList::class.java))
             }
 
             R.id.nav_settings -> {
@@ -95,3 +153,4 @@ class ShowProducts : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 }
+
