@@ -11,13 +11,12 @@
     <tbody>
         <tr *ngFor="let row of sv.data">
             <td>
-                <button (click)="remove(row.Id)" class="btn btn-danger">Delete</button>
+                <button (click)="remove(row.Id)" style="margin-right:5px;" class="btn btn-danger">Delete</button>
                 <button (click)="update(row.Id, row.Quantity)" class="btn btn-info">Edit</button>
             </td>
-            <td>{{row.ProductId}}</td>
             <td>{{row.Name}}</td>
             <td>
-                <img src="assets/images/{{ row.Photo }}" width="50" alt="Photo" />
+                <img src="{{ row.Photo }}" width="50" alt="Photo" />
             </td>
             <td>{{row.Price}}</td>
             <td>{{row.Quantity}}</td>

@@ -16,6 +16,7 @@ import { map } from 'rxjs/operators';
 export class SearchComponent implements OnInit, OnDestroy {
   state$: Subscription;
   private userId: string;
+  private cartId: string;
   private productId: number;
   private quantity: number;
   private bodyData: any;
@@ -46,6 +47,27 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.state$.unsubscribe();
+  }
+
+  addToCart(prodId: any): void {
+    //console.log(this.addForm);
+    //this.quantity = this.addForm.value.quantity;
+    this.productId = parseInt(prodId, 10);
+    this.userId = localStorage.getItem('id');
+    this.cartId = localStorage.getItem('cartId');
+    this.bodyData = {
+      cartId: this.cartId,
+      userId: this.userId,
+      productId: this.productId,
+      quantity: 1
+    };
+    console.log(this.bodyData);
+    this.cartService.addCart(this.bodyData).subscribe(resp => {
+      if (resp) {
+        const message = resp.message;
+        this.router.navigate(['cart']);
+      }
+    });
   }
 
 }

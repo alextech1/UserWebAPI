@@ -18,7 +18,7 @@ export class CartComponent implements OnInit {
   private carts: CartModel[] = [];
   private cartModel: CartModel;
   private bodyData: any;
-  private headElements = ['Option', 'Id', 'Name', 'Photo', 'Price', 'Quantity', 'Sub Total'];
+  private headElements = ['Option', 'Name', 'Photo', 'Price', 'Quantity', 'Sub Total'];
   constructor(
     private activatedRoute: ActivatedRoute,
     private cartService: CartService,

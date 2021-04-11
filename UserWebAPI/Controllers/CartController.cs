@@ -11,11 +11,11 @@ namespace UserWebAPI.Controllers
 {
     public class CartController : ControllerBase
     {
-        private DataContext dataContext;
+        private DataContext _dataContext;
 
         public CartController(DataContext context)
         {
-            this.dataContext = context;
+            _dataContext = context;
         }
 
         [AllowAnonymous]
@@ -82,8 +82,8 @@ namespace UserWebAPI.Controllers
                 cart.UserId = model.userId;
                 cart.ProductId = model.productId;
                 cart.Quantity = Convert.ToInt32(model.quantity);
-                dataContext.Carts.Add(cart);
-                dataContext.SaveChanges();
+                _dataContext.Carts.Add(cart);
+                _dataContext.SaveChanges();
                 return await Task.Run(() => Ok(new
                 {
                     message = message
@@ -121,9 +121,9 @@ namespace UserWebAPI.Controllers
 
             try
             {
-                Cart cart = dataContext.Carts.Find(model.cartId);
+                Cart cart = _dataContext.Carts.Find(model.cartId);
                 cart.Quantity = Convert.ToInt32(model.quantity);
-                dataContext.SaveChanges();
+                _dataContext.SaveChanges();
                 return await Task.Run(() => Ok(new
                 {
                     message = message
@@ -181,7 +181,7 @@ namespace UserWebAPI.Controllers
             List<Dictionary<string, object>> dataList = new List<Dictionary<string, object>>();
             List<Cart> cartList = new List<Cart>();
 
-            cartList = dataContext.Carts.Where(y => y.UserId == userId).ToList();
+            cartList = _dataContext.Carts.Where(y => y.UserId == userId).ToList();
 
             foreach (var cartItem in cartList)
             {
@@ -191,7 +191,7 @@ namespace UserWebAPI.Controllers
 
                 try
                 {
-                    Product product = dataContext.Products.Find(cartItem.ProductId);
+                    Product product = _dataContext.Products.Find(cartItem.ProductId);
                     pItem.Add("productId", product.Id);
                     pItem.Add("name", product.Name);
                     pItem.Add("photo", product.Photo);
@@ -219,7 +219,7 @@ namespace UserWebAPI.Controllers
             List<Dictionary<string, object>> dataList = new List<Dictionary<string, object>>();
             List<Cart> cartList = new List<Cart>();
 
-            cartList = dataContext.Carts.ToList();
+            cartList = _dataContext.Carts.ToList();
 
             foreach (var cartItem in cartList)
             {
@@ -229,7 +229,7 @@ namespace UserWebAPI.Controllers
 
                 try
                 {
-                    Product product = dataContext.Products.Find(cartItem.ProductId);
+                    Product product = _dataContext.Products.Find(cartItem.ProductId);
                     pItem.Add("productId", product.Id);
                     pItem.Add("name", product.Name);
                     pItem.Add("photo", product.Photo);
@@ -262,9 +262,9 @@ namespace UserWebAPI.Controllers
 
             try
             {
-                Cart cart = dataContext.Carts.Find(model.cartId);
-                dataContext.Carts.Remove(cart);
-                dataContext.SaveChanges();
+                Cart cart = _dataContext.Carts.Find(model.cartId);
+                _dataContext.Carts.Remove(cart);
+                _dataContext.SaveChanges();
                 dataList = GetCartsFunc();
                 return await Task.Run(() => Ok(new
                 {

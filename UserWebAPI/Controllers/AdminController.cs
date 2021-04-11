@@ -22,19 +22,19 @@ namespace UserWebAPI.Controllers
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private DataContext dataContext;
+        private DataContext _dataContext;
 
         public AdminController(
             IMapper mapper,
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            DataContext context
+            DataContext dataContext
         )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _mapper = mapper;
-            dataContext = context;
+            _dataContext = dataContext;
         }
 
         [AllowAnonymous]
@@ -115,7 +115,7 @@ namespace UserWebAPI.Controllers
         {           
 
             var userStore = _mapper.Map<User>(model);
-            var user = this.dataContext.Users.Where(t => t.UserName.CompareTo(model.UserName) == 0).FirstOrDefault();
+            var user = _dataContext.Users.Where(t => t.UserName.CompareTo(model.UserName) == 0).FirstOrDefault();
             if (user != null)
             {
                 user.Role = userStore.Role;

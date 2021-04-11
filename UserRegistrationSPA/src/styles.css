@@ -1,11 +1,10 @@
 div.sm-jumbotron {
   padding: 2rem;
   background-color: #38547b;
-  color: #ffffff;    
+  color: #ffffff;
 }
 
-
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -15,7 +14,7 @@ div.sm-jumbotron {
   }
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
   #index-banner .section {
     top: 0;
   }
@@ -32,12 +31,11 @@ div.sm-jumbotron {
   font-size: inherit;
 }
 
-.row .col.s12{
+.row .col.s12 {
   float: none !important;
   margin-left: 3px;
   margin-right: 3px;
 }
-
 
 html,
 body {
@@ -71,7 +69,6 @@ body {
 footer.page-footer {
   margin: 0;
 }
-
 
 .navbar-text {
   color: aliceblue;
@@ -121,9 +118,7 @@ img {
   transition: background-color 0.6s ease;
 }
 
-.active {
-  background-color: #717171;
-}
+
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -156,3 +151,4 @@ img {
     font-size: 11px;
   }
 }
+

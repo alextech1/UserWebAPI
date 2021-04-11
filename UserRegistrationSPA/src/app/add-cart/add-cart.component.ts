@@ -13,6 +13,7 @@ import { ProductService } from '../services/product.service';
 })
 export class AddCartComponent implements OnInit {
   private userId: string;
+  private cartId: string;
   private productId: number;
   private quantity: number;
   private bodyData: any;
@@ -43,8 +44,9 @@ export class AddCartComponent implements OnInit {
     this.quantity = this.addForm.value.quantity;
     this.productId = parseInt(this.addForm.value.product, 10);
     this.userId = localStorage.getItem('id');
+    this.cartId = localStorage.getItem('cartId');
     this.bodyData = {
-      cartId: 1,
+      cartId: this.cartId,
       userId: this.userId,
       productId: this.productId,
       quantity: this.quantity

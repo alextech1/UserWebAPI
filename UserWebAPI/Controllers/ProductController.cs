@@ -21,7 +21,7 @@ namespace UserWebAPI.Controllers
         [AllowAnonymous]
         [Route("api/getProducts")]
         [HttpPost]
-        public async Task<IActionResult> GetProducts([FromBody] SearchModel model)
+        public async Task<IActionResult> GetProducts(string searchStr) //([FromBody] SearchModel model)
         {          
             string message = "success";
             List<Dictionary<string, object>> dataList = new List<Dictionary<string, object>>();
@@ -29,12 +29,12 @@ namespace UserWebAPI.Controllers
 
             try
             {
-                if (string.IsNullOrEmpty(model.searchStr))
+                if (string.IsNullOrEmpty(searchStr))
                 {
                     productList = _dataContext.Products.ToList();
                 } else
                 {
-                    productList = _dataContext.Products.Where(t => t.Name.Contains(model.searchStr)).ToList();
+                    productList = _dataContext.Products.Where(t => t.Name.Contains(searchStr)).ToList();
                 }
                 
 

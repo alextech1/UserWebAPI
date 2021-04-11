@@ -8,8 +8,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  @Output() navHeight: EventEmitter<number> = new EventEmitter();
-  @ViewChild('navbar', {static: true}) navbar: ElementRef;
+  //@Output() navHeight: EventEmitter<number> = new EventEmitter();
+  //@ViewChild('navbar', {static: true}) navbar: ElementRef;
 
   searchInput: string = '';
   role: string;
@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router,) {}
 
   ngOnInit() {
-    this.navHeight.next(this.navbar.nativeElement.offsetHeight);
+    //this.navHeight.next(this.navbar.nativeElement.offsetHeight);
     this.role = localStorage.getItem('role');
     console.log(this.role);
     this.authenticated = this.authService.isAuthenticated();

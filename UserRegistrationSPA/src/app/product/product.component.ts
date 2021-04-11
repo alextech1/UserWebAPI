@@ -17,7 +17,7 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('product nginit');
+    console.log('product ngOnInit');
     this.productService.findAll('').subscribe(resp => {
         console.log('resp', resp);
         if (resp) {
@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
                   var item = dataList[i];
                   this.productModel = new Product();
                   this.productModel.id = item.Id;
-                  this.productModel.name = item.Name;
+                  this.productModel.name = item.Name;                  
                   this.productModel.price = item.Price;
                   this.productModel.photo = item.Photo;
                   this.products.push(this.productModel);

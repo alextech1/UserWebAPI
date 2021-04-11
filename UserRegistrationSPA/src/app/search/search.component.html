@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-md-4 col-sm-6" *ngFor="let product of products">
             <div class="card my-2">
-              <img src="assets/images/{{ product.Photo }}" alt="{{product.Name}}" width="200px" class="card-img-top" (click)="selectProduct(product.Id)" style="cursor:pointer;">
+              <img src="{{ product.Photo }}" alt="{{product.Name}}" width="200px" class="card-img-top" (click)="selectProduct(product.Id)" style="cursor:pointer;">
               <div class="card-header">
                 <div class="card-title">
                   <p>{{product.Name}}</p>
@@ -34,7 +34,7 @@
                   <button class="btn btn-outline-primary btn-sm btn-block"
                           [class.disabled]="product.Quantity < 1"
                           [class.btn-outline-danger]="product.Quantity < 1"
-                          (click)="AddProduct(product.Id)" [disabled]="product.Quantity < 1">
+                          (click)="addToCart(product.Id)" [disabled]="product.Quantity < 1">
                     {{ product.Quantity < 1 ? "NO STOCK" : "Add To Cart"}}
                   </button>
                 </div>
