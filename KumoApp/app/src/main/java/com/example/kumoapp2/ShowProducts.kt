@@ -44,28 +44,6 @@ class ShowProducts : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    /*private fun findProducts(inputStr: String) {
-        val contentType = MediaType.parse("application/json; charset=utf-8")
-        val body = RequestBody.create(
-            contentType,
-            "{\"searchStr\":\"$inputStr\"}"
-        )
-        val request = Request.Builder()
-            .url("http://10.0.2.2:5000/api/getProducts")
-            .post(body)
-            .build()
-
-        client.newCall(request).enqueue(object : okhttp3.Callback {
-            override fun onFailure(call: okhttp3.Call, e: IOException) {
-                Log.d("onFailure", e.message)
-            }
-
-            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
-                Log.d("onResponse getProducts", response.message())
-            }
-        })
-    }*/
-
     private fun findProducts(inputStr: String) {
         val paramObject = JSONObject()
         paramObject.put("searchStr", inputStr)

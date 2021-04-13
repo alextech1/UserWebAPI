@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using UserWebAPI.Entities;
 using UserWebAPI.Models;
 
@@ -31,10 +32,10 @@ namespace UserWebAPI.Controllers
             {
                 if (string.IsNullOrEmpty(searchStr))
                 {
-                    productList = _dataContext.Products.ToList();
+                    productList = await _dataContext.Products.ToListAsync();
                 } else
                 {
-                    productList = _dataContext.Products.Where(t => t.Name.Contains(searchStr)).ToList();
+                    productList = await _dataContext.Products.Where(t => t.Name.Contains(searchStr)).ToListAsync();
                 }
                 
 
@@ -50,21 +51,21 @@ namespace UserWebAPI.Controllers
                     dataList.Add(item);
                 }
 
-                return await Task.Run(() => Ok(new
+                return Ok(new
                 {
                     message = message,
                     productList = dataList
-                }));
+                });
             }
             catch(Exception ex)
             {
                 message = ex.Message;
                 
-                return await Task.Run(() => Ok(new
+                return Ok(new
                 {
                     message = message,
                     productList = dataList
-                }));
+                });
             }
 
             //return BadRequest(new { message = "There is no order status" });

@@ -35,19 +35,15 @@ namespace UserWebAPI.Controllers
             _pushNotificationLogic = new PushNotificationLogic(context);
         }
 
-
-
         [AllowAnonymous]
         [Route("api/getOrderStatus")]
         [HttpPost]
         public async Task<IActionResult> GetOrderStatus([FromBody] string UserId)
         {
-            object data = "";
-            
             //List<OrderStatus> orderStatus = _dataContext.OrderStatus.ToList();
             //User userItem = _dataContext.Users.Find(UserId);
 
-            List<OrderStatus> orderStatus = await _dataContext.OrderStatus.ToListAsync();
+            List<OrderStatus> orderStatus = _dataContext.OrderStatus.ToList();
             var userItem = await _userManager.FindByIdAsync(UserId);
             string UserName = userItem.UserName;           
 
@@ -65,10 +61,10 @@ namespace UserWebAPI.Controllers
                         message = "The order is out of delivery";                        
                     }
 
-                    return await Task.Run(() => Ok(new
+                    return Ok(new
                     {
                         message = message
-                    }));
+                    });
                 }
             }
             //title = "GetOrderStatus";
@@ -94,7 +90,7 @@ namespace UserWebAPI.Controllers
                 //User user = _dataContext.Users.Find(model.UserId);
                 //UserName = user.UserName;
 
-                List<OrderStatus> orderStatus = await _dataContext.OrderStatus.ToListAsync();
+                List<OrderStatus> orderStatus = _dataContext.OrderStatus.ToList();
                 User user = await _dataContext.Users.FindAsync(model.UserId);
                 UserName = user.UserName;
 

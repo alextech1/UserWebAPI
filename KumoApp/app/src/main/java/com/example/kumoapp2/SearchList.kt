@@ -34,7 +34,6 @@ class SearchList : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
     private var toolbar: Toolbar? = null
     private var navController: NavController? = null
     var simpleList: ListView? = null
-    var countryList = arrayOf("India", "China", "australia", "Portugle", "America", "NewZealand")
     var flags = intArrayOf(
         R.drawable.kumo_logo,
         R.drawable.kumo_logo,

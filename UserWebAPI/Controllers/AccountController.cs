@@ -44,7 +44,17 @@ namespace UserWebAPI.Controllers
             {
                 if (model == null)
                     model = new AccountModel();
-                var user = await _userManager.FindByNameAsync(model.UserName);
+
+                User user = new User();
+                if (model.UserName == null && model.Email != null)
+                {
+                    user = await _userManager.FindByEmailAsync(model.Email);
+                }
+                else if (model.UserName != null && model.Email == null)
+                {
+                    user = await _userManager.FindByNameAsync(model.UserName);
+                }
+                
 
                 if (user == null)
                 {
@@ -64,6 +74,7 @@ namespace UserWebAPI.Controllers
                     {
                         id = user.Id,
                         role = user.Role,
+                        email = user.Email,
                         token = GenerateJwtToken(model)
                     });
                 }

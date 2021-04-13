@@ -262,25 +262,25 @@ namespace UserWebAPI.Controllers
 
             try
             {
-                Cart cart = _dataContext.Carts.Find(model.cartId);
+                Cart cart = await _dataContext.Carts.FindAsync(model.cartId);
                 _dataContext.Carts.Remove(cart);
                 _dataContext.SaveChanges();
                 dataList = GetCartsFunc();
-                return await Task.Run(() => Ok(new
+                return Ok(new
                 {
                     message = message,
                     cartList = dataList
-                }));
+                });
             }
             catch(Exception ex)
             {
                 message = ex.Message;
                 dataList = GetCartsFunc();
-                return await Task.Run(() => Ok(new
+                return Ok(new
                 {
                     message = message,
                     cartList = dataList
-                }));
+                });
             }
             
             //return BadRequest(new { message = "Cart bad request" });

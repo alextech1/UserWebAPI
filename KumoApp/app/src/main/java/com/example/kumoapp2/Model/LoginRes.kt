@@ -1,6 +1,8 @@
 package com.example.kumoapp2.Model
 
 class LoginRes {
-    var UserName:String? = null
-    var Password:String? = null
+    var id: String? = null
+    var role: Int = 0
+    var email: String? = null
+    var token: String? = null
 }

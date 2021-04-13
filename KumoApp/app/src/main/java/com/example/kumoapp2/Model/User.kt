@@ -1,7 +1,22 @@
 package com.example.kumoapp2.Model
 
-class User {
-    var Id:Int? = 0
+data class User(
+    //val Id: String?,
+    val FirstName:String,
+    val LastName:String,
+    val UserName:String,
+    val Password:String,
+    val Email:String,
+    val Address:String,
+    val Role:Int
+    //val OrderStatus:Int,
+    //val Token:String,
+    //val uid:String?
+)
+
+
+//old class
+/*class User {
     var FirstName:String? = null
     var LastName:String? = null
     var UserName:String? = null
@@ -40,4 +55,4 @@ class User {
         this.UserName = UserName
         this.Password = Password
     }*/
-}
+}*/
