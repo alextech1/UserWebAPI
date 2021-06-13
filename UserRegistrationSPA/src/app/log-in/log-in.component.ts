@@ -43,6 +43,7 @@ export class LogInComponent implements OnInit {
         localStorage.removeItem('id');
         localStorage.removeItem('token');
         localStorage.removeItem('adminid');
+        localStorage.removeItem('address');
         console.log('logout success');
       }
 

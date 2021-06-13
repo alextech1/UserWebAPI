@@ -4,6 +4,10 @@
     margin-top: 50px;
 }
 
-h5 {
+h5, h4 {
     color: #ffffff
 }
+
+agm-map {
+    height: 300px;
+  }

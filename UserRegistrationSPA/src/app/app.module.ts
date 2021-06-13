@@ -35,6 +35,7 @@ import { CommonModule } from '@angular/common';
 import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { FilterPipe } from './pipes/filter.pipe';
       FooterComponent,
       StoreComponent,
       SearchComponent
+      
    ],
    imports: [
       HttpModule,
@@ -75,7 +77,10 @@ import { FilterPipe } from './pipes/filter.pipe';
       ToastrModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       DataTableModule,
-      ChartModule
+      ChartModule,
+      AgmCoreModule.forRoot({
+         apiKey: 'api_key'
+      })
    ],
    providers: [
       LineSeriesService,

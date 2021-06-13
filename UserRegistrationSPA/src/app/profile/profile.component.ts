@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { User } from '../shared/user.model';
 import { RoleService } from '../services/role.service';
 import { OrderStatusService } from '../services/orderstatus.service';
+import { AgmCoreModule } from '@agm/core';
 
 @Component({
   selector: 'app-profile',
@@ -14,7 +15,6 @@ import { OrderStatusService } from '../services/orderstatus.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
   constructor( private activatedRoute: ActivatedRoute,
     private productService: ProductService,
     private router: Router,
@@ -26,11 +26,16 @@ export class ProfileComponent implements OnInit {
     { }
     private users: User[] = [];
     private message: string;
+    private userAddress: string;
+    title = 'My first AGM project';
+    lat = 51.678418;
+    lng = 7.809007;
 
   ngOnInit() {
     const userId = localStorage.getItem('id');
     console.log('profile id');
     console.log(userId);
+    this.userAddress = localStorage.getItem('address');
     // var id = +userId;
     this.orderStatusService.getOrderStatus(userId).subscribe((data: any) => {
       console.log(data);

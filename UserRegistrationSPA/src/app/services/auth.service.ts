@@ -37,6 +37,7 @@ export class AuthService {
         const user = response;
         console.log(response);
         if (user) {
+          localStorage.setItem('address', user.address);
           localStorage.setItem('token', user.token);
           localStorage.setItem('role', user.role);
           localStorage.setItem('id', user.id);
